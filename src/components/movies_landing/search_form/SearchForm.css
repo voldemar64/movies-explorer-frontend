@@ -1,0 +1,88 @@
+.search-form {
+  padding: 0 70px;
+  margin: 70px 0 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px #424242 solid;
+  padding-bottom: 13px;
+  margin-bottom: 33px;
+}
+
+.search-form__input {
+  background-color: transparent;
+  width: 80%;
+  padding: 0;
+  margin: 0;
+  color: #8B8B8B;
+  border: none;
+  font-size: 28px;
+}
+
+.search-form__button {
+  margin: 0;
+  padding: 0;
+  width: 34px;
+  height: 34px;
+  border: none;
+  cursor: pointer;
+  background: center center no-repeat url("../../../images/find.svg");
+  transition: opacity .3s linear;
+}
+
+.search-form__button:hover {
+  opacity: .5;
+}
+
+.search-form__toggle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.search-form__checkbox {
+  padding: 0;
+  width: 36px;
+  height: 26px;
+  cursor: pointer;
+  border: none;
+  border-radius: 16px;
+  background: center center no-repeat url("../../../images/toggleon.svg");
+}
+
+.search-form__checkbox_on {
+  background: center center no-repeat url("../../../images/toggleon.svg");
+}
+
+.search-form__text {
+  font-size: 13px;
+  line-height: 18px;
+  color: #FFFFFF;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .search-form {
+    justify-content: right;
+    margin: 80px 0 61px;
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search-form {
+    justify-content: center;
+    margin: 70px 0 51px;
+    padding: 0 14px;
+  }
+
+  .search-form__input {
+    font-size: 18px;
+  }
+}

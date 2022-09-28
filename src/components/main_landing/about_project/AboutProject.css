@@ -1,0 +1,153 @@
+.about-project {
+  display: flex;
+  flex-direction: column;
+  padding: 110px 70px;
+  margin: 0;
+  background-color: #202020;
+  margin: 0 auto;
+}
+
+.about-project__container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 110px;
+  gap: 40px; /*ИСПРАВИТЬ*/
+}
+
+.about-project__title {
+  font-weight: 400;
+  margin: 0;
+  color: #fff;
+  letter-spacing: -0.04em;
+}
+
+.about-project__title_size_m {
+  font-size: 22px;
+  line-height: 27px;
+  padding-bottom: 23px;
+  margin-bottom: 70px;
+  border-bottom: #DADADA 1px solid;
+}
+
+.about-project__title_size_s {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.about-project__subtitle {
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-project__text {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.line {
+  width: 100%;
+  display: flex;
+}
+
+.line__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.line__container_size_s {
+  width: 20%;
+}
+
+.line__container_size_m {
+  width: 80%;
+}
+
+.line__title {
+  width: 100%;
+  margin: 0;
+  padding: 9px 0;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.line__title_size_s {
+  background-color: #3DDC84;
+  color: #000;
+}
+
+.line__title_size_m {
+  background-color: #303030;
+  color: #fff;
+}
+
+.line__subtitle {
+  margin: 0;
+  color: #8B8B8B;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__container {
+    margin-bottom: 93px;
+    gap: 30px; /*ИСПРАВИТЬ*/
+  }
+
+  .about-project__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-project {
+    padding: 70px 18px;
+  }
+
+  .about-project__container {
+    flex-direction: column;
+    gap: 56px;
+    margin-bottom: 60px;
+  }
+
+  .about-project__title_size_m {
+    margin-bottom: 60px;
+    padding-bottom: 28px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__title_size_s {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .line__title {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .line__subtitle {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
