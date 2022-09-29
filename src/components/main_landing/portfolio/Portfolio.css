@@ -1,0 +1,64 @@
+.portfolio {
+  padding: 0 70px 125px;
+  display: flex;
+  flex-direction: column;
+  background-color: #202020;
+}
+
+.portfolio__title {
+  margin: 0 0 50px;
+  color: #8B8B8B;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.portfolio__links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.portfolio__link {
+  padding-bottom: 19px;
+  color: #fff;
+  text-decoration: none;
+  background: center right no-repeat url("../../../images/arrow.svg");
+  background-size: 20px 20px;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  border-bottom: #424242 1px solid;
+  transition: opacity .3s linear;
+}
+
+.portfolio__link:last-of-type {
+  border: 0;
+  padding-bottom: 0;
+}
+
+.portfolio__link:hover {
+  opacity: .5;
+}
+
+@media screen and (max-width: 1279px) {
+  .portfolio {
+    padding: 0 50px 90px;
+  }
+  
+  .portfolio__link {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .portfolio {
+    padding: 0 14px 70px;
+  }
+
+  .portfolio__link {
+    font-size: 18px;
+    line-height: 28px;
+    background-size: 18px 18px;
+  }
+}

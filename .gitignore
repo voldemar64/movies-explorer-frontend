@@ -1,0 +1,20 @@
+
+# dependencies
+node_modules
+
+# production
+/build
+
+# misc
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.idea
+.vscode
