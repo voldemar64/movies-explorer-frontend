@@ -13,8 +13,8 @@ function Footer() {
         <div className="footer__nav">
           <p className="footer__date">© 2020</p>
           <div className="footer__links">
-            <a className="footer__link" href="https://praktikum.yandex.ru/">Яндекс.Практикум</a>
-            <a className="footer__link" href="https://github.com/">Github</a>
+            <a className="footer__link" rel="noreferrer" target="_blank" href="https://praktikum.yandex.ru/">Яндекс.Практикум</a>
+            <a className="footer__link" rel="noreferrer" target="_blank" href="https://github.com/">Github</a>
           </div>
         </div>
       </footer>

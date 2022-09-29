@@ -6,13 +6,13 @@ import Porfolio from "../portfolio/Portfolio";
 
 function Main() {
   return (
-    <section className="main">
+    <>
       <NavTab/>
       <AboutProject/>
       <Techs/>
       <AboutMe/>
       <Porfolio/>
-    </section>
+    </>
   )
 }
 

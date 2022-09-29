@@ -3,7 +3,7 @@ import "./MoviesCard.css";
 function MoviesCard({ card }) {
 
   return(
-    <div className="card">
+    <li className="card">
       <div className="card__container">
         <p className="card__title">
           {card.title}
@@ -13,8 +13,8 @@ function MoviesCard({ card }) {
         </p>
       </div>
       <img className="card__image" src={card.link} alt={card.title}/>
-      <button className="card__like card__like_type_liked"></button>
-    </div>
+      <button type="button" className="card__like card__like_type_liked"></button>
+    </li>
   )
 }
 

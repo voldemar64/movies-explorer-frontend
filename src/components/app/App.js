@@ -1,7 +1,6 @@
 import {Route, Switch} from "react-router-dom";
 import React from "react";
 
-import "./App.css";
 import Header from "../header/Header";
 import Main from "../main_landing/main/Main";
 import Login from "../login/Login";
@@ -27,37 +26,39 @@ function App() {
   }
 
   return (
-    <div className='page'>
+    <>
       <Header onSideBarOpen={handleSideBarOpen} windowWidth={useWindowWidth}/>
-      <Switch>
-        <Route exact path="/">
-          <Main/>
-        </Route>
-        <Route path="/signin">
-          <Login/>
-        </Route>
-        <Route path="/signup">
-          <Register/>
-        </Route>
-        <Route exact path="/movies">
-          <Movies movies={cards}/>
-        </Route>
-        <Route path="/saved-movies">
-          <SavedMovies savedMovies={cards}/>
-        </Route>
-        <Route path="/profile">
-          <Profile/>
-        </Route>
-        <Route path="*">
-          <NotFound/>
-        </Route>
-      </Switch>
+      <main className="main">
+        <Switch>
+          <Route exact path="/">
+            <Main/>
+          </Route>
+          <Route path="/signin">
+            <Login/>
+          </Route>
+          <Route path="/signup">
+            <Register/>
+          </Route>
+          <Route exact path="/movies">
+            <Movies movies={cards}/>
+          </Route>
+          <Route path="/saved-movies">
+            <SavedMovies savedMovies={cards}/>
+          </Route>
+          <Route path="/profile">
+            <Profile/>
+          </Route>
+          <Route path="*">
+            <NotFound/>
+          </Route>
+        </Switch>
+      </main>
       <Footer/>
       <SideBar
         isOpen={isSideBarOpen}
         onClose={handleSideBarClose}
       />
-    </div>
+    </>
   );
 }
 

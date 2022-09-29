@@ -1,4 +1,5 @@
 .cards {
+  list-style: none;
   padding: 70px 70px 166px;
   display: grid;
   justify-content: center;
