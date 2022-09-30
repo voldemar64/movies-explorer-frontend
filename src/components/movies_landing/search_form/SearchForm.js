@@ -15,8 +15,9 @@ function SearchForm() {
         <button className="search-form__button"/>
       </form>
       <div className="search-form__toggle">
-        <button type="button" className={`search-form__checkbox${isActive ? " search-form__checkbox_on" : ""}`} onClick={toggleButtonState}/>
-        <p className="search-form__text">Короткометражки</p>
+        <input type="checkbox" className={`search-form__checkbox${isActive ? " search-form__checkbox_on" : ""}`} 
+        onClick={toggleButtonState}/>
+        <label className="search-form__text">Короткометражки</label>
       </div>
     </section>
   )
