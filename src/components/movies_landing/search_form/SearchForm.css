@@ -51,7 +51,7 @@
   --active-inner: #3DDC84;
   --disabled-inner: rgb(122, 122, 122);
   --focus: 2px rgba(39, 94, 254, .3);
-  --border: #4285F4;
+  --border: #444;
   --border-hover: #3DDC84;
   --background: #202020;
   -webkit-appearance: none;
