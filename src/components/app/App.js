@@ -246,6 +246,7 @@ function App() {
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
               listLength={listLength}
+              loggedIn={loggedIn}
             />
           </Route>
           <Route path="/saved-movies">
@@ -257,6 +258,7 @@ function App() {
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
               listLength={listLength}
+              loggedIn={loggedIn}
             />
           </Route>
           <Route path="/profile">
@@ -264,15 +266,11 @@ function App() {
               component={Profile}
               onSubmit={handleEditProfile}
               signOut={handleSignOut}
+              loggedIn={loggedIn}
             />
           </Route>
           <Route path="*">
-            {(pathName.pathname === "/saved-movies" || 
-              pathName.pathname === "/movies" ||
-              pathName.pathname === "/profile") 
-              ? (!loggedIn && <Redirect to="/"/>)
-              : <NotFound/>
-            }
+            <NotFound/>
           </Route>
         </Switch>
       </main>
