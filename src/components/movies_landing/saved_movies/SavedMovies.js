@@ -1,11 +1,20 @@
 import SearchForm from "../search_form/SearchForm";
 import MoviesCardsList from "../movies_card_list/MoviesCardList";
 
-function Movies(props) {
+function Movies({ durationFilter, handleSearch, savedMovies, onDelete, addMovies, listLength }) {
   return (
     <>
-      <SearchForm/>
-      <MoviesCardsList movies={props.savedMovies}/>
+      <SearchForm 
+        durationFilter={durationFilter} 
+        handleSearch={handleSearch}
+      />
+      <MoviesCardsList 
+        movies={savedMovies}
+        savedMovies={savedMovies}
+        onDelete={onDelete}
+        addMovies={addMovies}
+        listLength={listLength}
+      />
     </>
   )
 }

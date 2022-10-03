@@ -1,12 +1,12 @@
 import "./Register.css";
 import { Link } from "react-router-dom";
 
-function Login() {
+function Login({ submit }) {
   return(
     <section className="register">
       <Link className="register__logo" to="/"></Link>
       <h2 className="register__title">Добро пожаловать!</h2>
-      <form className="register__form">
+      <form className="register__form" onSubmit={submit}>
         <div className="register__container">
           <label className="register__label">Имя</label>
           <input

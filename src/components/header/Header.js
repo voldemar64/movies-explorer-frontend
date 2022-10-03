@@ -2,9 +2,9 @@ import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
 import profilePath from "../../images/profile.svg";
 
-function Header(props) {
+function Header({ onSideBarOpen, isLogged, windowWidth }) {
   const pathName = useLocation();
-  const { width } = props.windowWidth();
+  const { width } = windowWidth();
   
   return (
     (pathName.pathname === "/" ||
@@ -14,7 +14,7 @@ function Header(props) {
       <header className={`header${pathName.pathname === "/" ? "" : " header_type_dark"}`}>
         <div className="header__container">
           <Link to="/" className="header__logo"></Link>
-          {pathName.pathname!=="/" &&
+          {isLogged &&
             width>=1280 &&
             <nav className="header__nav">
               <Link to="/movies" className="header__link">Фильмы</Link>
@@ -22,13 +22,13 @@ function Header(props) {
             </nav>
           }
         </div>
-          {pathName.pathname!=="/" ?
+          {isLogged ?
             (width>=1280 ?
             <Link to="/profile" className="header__link header__link_type_profile">
               <p className="header__subtitle">Аккаунт</p>
               <img src={profilePath} alt="профиль" className="header__img"></img>
             </Link> :
-            <button type="button" className="header__button" onClick={props.onSideBarOpen}></button>
+            <button type="button" className="header__button" onClick={onSideBarOpen}></button>
             ) :
             <nav className="header__account">
               <Link to="/signup" className="header__link">Регистрация</Link>

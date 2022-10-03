@@ -1,12 +1,12 @@
 import React from 'react'
-import './Preloader.css'
+import "./Preloader.css";
 
-const Preloader = () => {
+function Preloader({ addMovies }) {
     return (
-        <div className="preloader">
-            <div className="preloader__container">
-                <span className="preloader__round">Ещё</span>
-            </div>
+        <div className='preloader'>
+            <button className='preloader__button'
+                onClick={addMovies}
+            ></button>
         </div>
     )
 };
