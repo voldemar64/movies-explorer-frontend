@@ -128,7 +128,7 @@ function App() {
     history.push('/')
   }
 
-  function handleSerch(input) {
+  function handleSearch(input) {
     const filteredSearch = localApiFilms.filter((i) => {
       const inputs = input.toLowerCase();
       const nameEN = i.nameEN.toLowerCase();
@@ -239,7 +239,7 @@ function App() {
             <ProtectedRoute
               component={Movies}
               durationFilter={durationFilter}
-              handleSearch={handleSerch}
+              handleSearch={handleSearch}
               movies={apiFilteredMovies}
               savedMovies={localSavedMovies}
               onSave={handleLikeMovie}
@@ -251,8 +251,8 @@ function App() {
           <Route path="/saved-movies">
             <ProtectedRoute
               component={SavedMovies}
-              durationFilter={durationFilter}
-              handleSearch={handleSerch}
+              durationFilter={savedDurationFilter}
+              handleSearch={handleSearchSaved}
               savedMovies={localSavedMovies}
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
