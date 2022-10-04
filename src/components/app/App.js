@@ -63,7 +63,8 @@ function App() {
       moviesApi.getMovies()
         .then(movies => {
           localStorage.setItem('movies', JSON.stringify(movies));
-          setLocalApiFilms(movies); //ВОЗМОЖНО НЕПРАВИЛЬНО
+          const allMovies = JSON.parse(localStorage.getItem('movies'));
+          setLocalApiFilms(allMovies); //ВОЗМОЖНО НЕПРАВИЛЬНО
         })
         .catch(err => console.log(`Ошибка при получении фильмов: ${err}`))
     }
@@ -122,8 +123,6 @@ function App() {
     localStorage.removeItem('savedMovies')
     localStorage.removeItem('filteredMovies')
     localStorage.removeItem('savedFilteredMovies')
-    localStorage.removeItem('savedSearchValue')
-    localStorage.removeItem('savedCheck')
     localStorage.removeItem('jwt')
     history.push('/')
   }

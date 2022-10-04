@@ -1,30 +1,11 @@
-import { useLocation } from "react-router-dom";
 import "./SearchForm.css"
 import React from "react";
 
 function SearchForm({ durationFilter, handleSearch }) {
-  const pathName = useLocation();
 
-  const savedCheck = localStorage.getItem('savedCheck');
-  const savedSearchValue = localStorage.getItem('savedSearchValue');
 
-  const [isActive, setIsActive] = React.useState(savedCheck ?? false);
-  const [value, setValue] = React.useState(savedSearchValue ?? '');
-
-  React.useEffect(() => {
-    if (pathName.pathname === '/saved-movies') {
-      setIsActive(false)
-      handleSearch(value)
-      setValue('')
-    }
-  }, [pathName])
-
-  React.useEffect(() => {
-    if (pathName.pathname === '/movies') {
-      localStorage.setItem('savedSearchValue', value)
-      localStorage.setItem('savedCheck', isActive)
-    }
-  }, [pathName, value, isActive])
+  const [isActive, setIsActive] = React.useState(false);
+  const [value, setValue] = React.useState('');
 
   function handleSubmitForm(e) {
     e.preventDefault();
