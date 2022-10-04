@@ -54,7 +54,7 @@ class MainApi {
   }
 
   saveMovie(movie) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       headers: this._getHeaders(),
       body: JSON.stringify({
@@ -77,7 +77,7 @@ class MainApi {
   }
 
   deleteMovie(movie){
-    return fetch(`${this._baseUrl}/cards/${movie._id}`, {
+    return fetch(`${this._baseUrl}/movies/${movie._id}`, {
       method: 'DELETE',
       headers: this._getHeaders()
     })

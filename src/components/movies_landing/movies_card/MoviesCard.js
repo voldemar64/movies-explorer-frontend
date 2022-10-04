@@ -11,7 +11,7 @@ function MoviesCard({ key, card, savedMovies, onSave, onDelete}) {
           {card.nameRU}
         </p>
         <p className="card__duration">
-          {card.duration}
+          {card.duration} минут
         </p>
       </div>
       <a className="card__link" rel="noreferrer" target="_blank"
