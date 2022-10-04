@@ -67,7 +67,7 @@ function App() {
         })
         .catch(err => console.log(`Ошибка при получении фильмов: ${err}`))
     }
-  })
+  }, [loggedIn])
 
   React.useEffect(() => {
     if (loggedIn) {
@@ -78,7 +78,7 @@ function App() {
         })
         .catch(err => console.log(`Ошибка при получении сохранённых фильмов: ${err}`))
     }
-  })
+  }, [loggedIn])
 
   React.useEffect(() => {
     if (width >= 1280) {
