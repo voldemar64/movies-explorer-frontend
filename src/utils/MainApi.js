@@ -77,7 +77,7 @@ class MainApi {
   }
 
   deleteMovie(movie){
-    return fetch(`${this._baseUrl}/movies/${movie.movieId}`, {
+    return fetch(`${this._baseUrl}/movies/${movie._id}`, {
       method: 'DELETE',
       headers: this._getHeaders()
     })
