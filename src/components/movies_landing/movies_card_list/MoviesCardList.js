@@ -6,8 +6,9 @@ function MoviesCardList({movies, savedMovies, onSave, onDelete, addMovies, listL
 
   return (
     <section className="movies">
+      {movies.length!==0 ?
       <ul className="cards">
-        {movies && movies.map((card, key) => {
+        {movies.map((card, key) => {
           return (
             <MoviesCard key={key} card={card} savedMovies={savedMovies}
               onSave={onSave} onDelete={onDelete}
@@ -16,7 +17,8 @@ function MoviesCardList({movies, savedMovies, onSave, onDelete, addMovies, listL
         }).slice(0, listLength)
         }
       </ul>
-
+      : <></>
+      }
       {movies.length === 0 ? <p className="text">Введите название фильма в поисковой строке</p> : 
         (movies.length > listLength) &&
         <Preloader addMovies={addMovies}/>}
