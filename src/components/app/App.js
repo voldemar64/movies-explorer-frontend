@@ -62,7 +62,7 @@ function App() {
     if (loggedIn) {
       moviesApi.getMovies()
         .then(movies => {
-          localStorage.setItem('movies', Array.from(JSON.stringify(movies)));
+          localStorage.setItem('movies', JSON.stringify(movies));
           const allMovies = JSON.parse(localStorage.getItem('movies'));
           setLocalApiFilms(allMovies); //ВОЗМОЖНО НЕПРАВИЛЬНО
         })
@@ -74,7 +74,7 @@ function App() {
     if (loggedIn) {
       mainApi.getSavedMovies()
         .then(movies => {
-          localStorage.setItem('savedMovies', Array.from(JSON.stringify(movies.filter((e) => e.owner === currentUser._id))));
+          localStorage.setItem('savedMovies', JSON.stringify(movies.filter((e) => e.owner === currentUser._id)));
           const userMovies = JSON.parse(localStorage.getItem('savedMovies'))
           setLocalSavedMovies(userMovies);
         })
