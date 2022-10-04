@@ -13,10 +13,11 @@
 }
 
 .text {
-  justify-self: center;
+  align-self: center;
+  text-align: center;
   color: #fff;
   margin: 0;
-  width: 300px;
+  width: 366px;
 }
 
 @media screen and (max-width: 1279px) {
@@ -32,5 +33,9 @@
     padding: 40px 10px 196px;
     grid-template-columns: repeat(1, 300px);
     gap: 16px;
+  }
+
+  .text {
+    width: 300px;
   }
 }
