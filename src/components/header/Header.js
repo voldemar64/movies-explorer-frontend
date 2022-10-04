@@ -17,8 +17,8 @@ function Header({ onSideBarOpen, isLogged, windowWidth }) {
           {isLogged &&
             width>=1280 &&
             <nav className="header__nav">
-              <Link to="/movies" className="header__link">Фильмы</Link>
-              <Link to="/saved-movies" className="header__link">Сохранённые фильмы</Link>
+              <Link to="/movies" className={`header__link${pathName.pathname === "/movies" ? ' header__link_active' : ''}`}>Фильмы</Link>
+              <Link to="/saved-movies" className={`header__link${pathName.pathname === "/movies" ? ' header__link_active' : ''}`}>Сохранённые фильмы</Link>
             </nav>
           }
         </div>
