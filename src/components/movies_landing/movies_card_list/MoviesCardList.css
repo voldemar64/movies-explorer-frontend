@@ -1,3 +1,8 @@
+.movies {
+  display: flex;
+  flex-direction: column;
+}
+
 .cards {
   list-style: none;
   padding: 70px 70px 166px;
