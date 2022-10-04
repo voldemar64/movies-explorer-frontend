@@ -20,9 +20,10 @@ function MoviesCard({ key, card, savedMovies, onSave, onDelete}) {
           src={pathName.pathname === "/movies" ? `https://api.nomoreparties.co${card.image.url}` : card.image}/>
       </a>
       {pathName.pathname === '/movies' ?
-        <button type="button" onClick={() => {
-            onSave(card)
-          }}
+        <button type="button" onClick={() => {savedMovies.some((m) => m.movieId === card.id) ?
+          onDelete(card) :
+          onSave(card)
+        }}
           className={`card__like${savedMovies.some((m) => m.movieId === card.id) ? ' card__like_type_liked' : ''}`}></button>
         :
         <button type="button" onClick={() => {
