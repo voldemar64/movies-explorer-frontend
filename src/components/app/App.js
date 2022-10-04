@@ -114,7 +114,7 @@ function App() {
       .catch(() => console.log('Что-то пошло не так! Попробуйте ещё раз.'))
   }
 
-  function handleSignOut() {        //ДОПИСАТЬ
+  function handleSignOut() {
     setLoggedIn(false)
     setCurrentUser(null)
     setSavedFilteredMovies([])
@@ -150,7 +150,7 @@ function App() {
     })
 
     localStorage.setItem('savedFilteredMovies', JSON.stringify(filteredSearch))
-    setSavedFilteredMovies(filteredSearch)
+    setSavedFilteredMovies(filteredSearch.length !== 0 ? filteredSearch : localSavedMovies)
   }
 
   function durationFilter(toggle) {
@@ -176,13 +176,13 @@ function App() {
   }
 
   function handleLikeMovie(movie) {
-    const liked = localSavedMovies.some((i) => movie.id === i.movieId);
+    const liked = localSavedMovies.some((i) => movie.movieId === i.movieId);
 
     if (!liked) {
       mainApi.saveMovie(movie)
         .then(res => setLocalSavedMovies([...localSavedMovies, res]))
     } else {
-      const cardToDelete = localSavedMovies.find((i) => i.movieId === movie.id)
+      const cardToDelete = localSavedMovies.find((i) => i.movieId === movie.movieId)
       handleDislikeMovie(cardToDelete)
     }
   }
@@ -190,8 +190,8 @@ function App() {
   function handleDislikeMovie(movie) {
     mainApi.deleteMovie(movie)
       .then(() => {
-        setSavedFilteredMovies(savedFilteredMovies.filter((i) => i.id !== movie.id)) //ВОЗМОЖНО С НИЖНИМ ПОДЧЕРКИВАНИЕМ
-        setLocalSavedMovies(localSavedMovies.filter((i) => i.id !== movie.id))
+        setSavedFilteredMovies(savedFilteredMovies.filter((i) => i.movieId !== movie.movieId)) //ВОЗМОЖНО С НИЖНИМ ПОДЧЕРКИВАНИЕМ
+        setLocalSavedMovies(localSavedMovies.filter((i) => i.movieId !== movie.movieId))
       })
   }
 

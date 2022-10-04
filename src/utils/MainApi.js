@@ -65,7 +65,7 @@ class MainApi {
         description: movie.description,
         image: `https://api.nomoreparties.co${movie.image.url}`,
         trailerLink: movie.trailerLink,
-        thumbnail: `https://api.nomoreparties.co${movie.thumbnail}`,
+        thumbnail: `https://api.nomoreparties.co${movie.thumbnail.url}`,
         movieId: movie.id,
         nameRU: movie.nameRU,
         nameEN: movie.nameEN,
@@ -77,7 +77,7 @@ class MainApi {
   }
 
   deleteMovie(movie){
-    return fetch(`${this._baseUrl}/movies/${movie.id}`, {
+    return fetch(`${this._baseUrl}/movies/${movie._id}`, {
       method: 'DELETE',
       headers: this._getHeaders()
     })
