@@ -6,7 +6,7 @@ function Preloader({ addMovies }) {
         <div className='preloader'>
             <button className='preloader__button'
                 onClick={addMovies}
-            ></button>
+            >Ещё</button>
         </div>
     )
 };
