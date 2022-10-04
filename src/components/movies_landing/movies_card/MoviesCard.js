@@ -23,12 +23,12 @@ function MoviesCard({ key, card, savedMovies, onSave, onDelete}) {
         <button type="button" onClick={() => {
             onSave(card)
           }}
-          className={`card__like${savedMovies.some((m) => m.movieId === card.id) ? '' : ' card__like_type_liked'}`}></button>
+          className={`card__like${savedMovies.some((m) => m.movieId !== card.id) ? '' : ' card__like_type_liked'}`}></button>
         :
         <button type="button" onClick={() => {
             onDelete(card)
           }}
-          className={`card__like${savedMovies.some((m) => m.movieId === card.id) ? '' : ' card__like_type_delete'}`}></button>
+          className="card__like card__like_type_delete"></button>
       }
     </li>
   )
