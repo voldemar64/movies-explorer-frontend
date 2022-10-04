@@ -55,6 +55,7 @@
 
 .profile__submit {
   background-color: transparent;
+  color: #fff;
   border: none;
   font-size: 13px;
   line-height: 16px;
@@ -67,6 +68,9 @@
 }
 
 .profile__signout {
+  width: 136px;
+  align-self: center;
+  background-color: transparent;
   text-decoration: none;
   font-weight: 500;
   font-size: 13px;
