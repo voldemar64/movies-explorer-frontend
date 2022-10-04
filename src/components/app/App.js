@@ -190,8 +190,8 @@ function App() {
   function handleDislikeMovie(movie) {
     mainApi.deleteMovie(movie)
       .then(() => {
-        setSavedFilteredMovies(savedFilteredMovies.filter((i) => i.movieId !== movie.id)) //ВОЗМОЖНО С НИЖНИМ ПОДЧЕРКИВАНИЕМ
-        setLocalSavedMovies(localSavedMovies.filter((i) => i.movieId !== movie.id))
+        setSavedFilteredMovies(savedFilteredMovies.filter((i) => i.id !== movie.id)) //ВОЗМОЖНО С НИЖНИМ ПОДЧЕРКИВАНИЕМ
+        setLocalSavedMovies(localSavedMovies.filter((i) => i.id !== movie.id))
       })
   }
 
