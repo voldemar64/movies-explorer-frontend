@@ -182,7 +182,7 @@ function App() {
       mainApi.saveMovie(movie)
         .then(res => setLocalSavedMovies([...localSavedMovies, res]))
     } else {
-      const cardToDelete = localSavedMovies.find((i) => i.movieId === movie.movieId)
+      const cardToDelete = localSavedMovies.find((i) => i.movieId === movie.id)
       handleDislikeMovie(cardToDelete)
     }
   }
