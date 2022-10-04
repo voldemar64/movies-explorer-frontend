@@ -7,7 +7,7 @@ function MoviesCardList({movies, savedMovies, onSave, onDelete, addMovies, listL
   return (
     <section className="movies">
       <ul className="cards">
-        {movies.map((card, key) => {
+        {movies && movies.map((card, key) => {
           return (
             <MoviesCard key={key} card={card} savedMovies={savedMovies}
               onSave={onSave} onDelete={onDelete}

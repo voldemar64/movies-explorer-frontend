@@ -253,6 +253,7 @@ function App() {
               component={SavedMovies}
               durationFilter={savedDurationFilter}
               handleSearch={handleSearchSaved}
+              movies={localSavedMovies}
               savedMovies={localSavedMovies}
               onDelete={handleDislikeMovie}
               addMovies={addMovies}

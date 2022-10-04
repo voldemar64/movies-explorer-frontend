@@ -1,7 +1,7 @@
 import SearchForm from "../search_form/SearchForm";
 import MoviesCardsList from "../movies_card_list/MoviesCardList";
 
-function Movies({ durationFilter, handleSearch, savedMovies, onDelete, addMovies, listLength }) {
+function Movies({ movies, durationFilter, handleSearch, savedMovies, onDelete, addMovies, listLength }) {
   return (
     <>
       <SearchForm 
@@ -9,7 +9,7 @@ function Movies({ durationFilter, handleSearch, savedMovies, onDelete, addMovies
         handleSearch={handleSearch}
       />
       <MoviesCardsList 
-        movies={savedMovies}
+        movies={movies}
         savedMovies={savedMovies}
         onDelete={onDelete}
         addMovies={addMovies}
