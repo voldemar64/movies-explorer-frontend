@@ -176,7 +176,7 @@ function App() {
   }
 
   function handleLikeMovie(movie) {
-    const liked = localSavedMovies.some((i) => movie.movieId === i.movieId);
+    const liked = localSavedMovies.some((i) => movie.id === i.movieId);
 
     if (!liked) {
       mainApi.saveMovie(movie)
