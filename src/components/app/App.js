@@ -74,7 +74,8 @@ function App() {
       mainApi.getSavedMovies()
         .then(movies => {
           localStorage.setItem('savedMovies', JSON.stringify(movies.filter((e) => e.owner === currentUser._id)));
-          setLocalSavedMovies(movies);
+          const userMovies = JSON.parse(localStorage.getItem('savedMovies'))
+          setLocalSavedMovies(userMovies);
         })
         .catch(err => console.log(`Ошибка при получении сохранённых фильмов: ${err}`))
     }

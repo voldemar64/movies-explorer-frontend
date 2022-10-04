@@ -17,7 +17,7 @@ function MoviesCardList({movies, savedMovies, onSave, onDelete, addMovies, listL
         }
       </ul>
 
-      {movies.length === 0 ? <p>Введите название фильма в поисковой строке</p> : 
+      {movies.length === 0 ? <p className="text">Введите название фильма в поисковой строке</p> : 
         (movies.length > listLength) &&
         <Preloader addMovies={addMovies}/>}
     </section>

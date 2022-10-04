@@ -7,6 +7,12 @@
   grid-template-columns: repeat(3, 360px);
 }
 
+.text {
+  justify-self: center;
+  color: #fff;
+  margin: 0;
+}
+
 @media screen and (max-width: 1279px) {
   .cards {
     padding: 70px 30px 196px;
