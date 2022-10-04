@@ -80,7 +80,7 @@ function App() {
         })
         .catch(err => console.log(`Ошибка при получении сохранённых фильмов: ${err}`))
     }
-  }, [loggedIn])
+  }, [loggedIn, currentUser])
 
   React.useEffect(() => {
     if (width >= 1280) {
