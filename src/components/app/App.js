@@ -30,9 +30,7 @@ function App() {
   const [localSavedMovies, setLocalSavedMovies] = React.useState([]);
   const [localApiMovies, setLocalApiMovies] = React.useState([]);
   const [savedFilteredMovies, setSavedFilteredMovies] = React.useState([]);
-  const [savedShortMovies, setShortSavedMovies] = React.useState([]);
   const [apiFilteredMovies, setApiFilteredMovies] = React.useState([]);
-  const [shortMovies, setShortMovies] = React.useState([]);
 
   const history = useHistory();
   const { width } = useWindowWidth();
