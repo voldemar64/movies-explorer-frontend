@@ -30,7 +30,9 @@ function App() {
   const [localSavedMovies, setLocalSavedMovies] = React.useState([]);
   const [localApiMovies, setLocalApiMovies] = React.useState([]);
   const [savedFilteredMovies, setSavedFilteredMovies] = React.useState([]);
+  const [savedShortMovies, setShortSavedMovies] = React.useState([]);
   const [apiFilteredMovies, setApiFilteredMovies] = React.useState([]);
+  const [shortMovies, setShortMovies] = React.useState([]);
 
   const history = useHistory();
   const { width } = useWindowWidth();
@@ -148,7 +150,7 @@ function App() {
       const nameEN = i.nameEN.toLowerCase();
       const nameRU = i.nameRU.toLowerCase();
 
-      return ((nameEN.includes(inputs)) || nameRU.includes(inputs) ? i : null)
+      return ((nameEN.includes(inputs) || nameRU.includes(inputs)) ? i : null)
     })
 
     localStorage.setItem('filteredMovies', JSON.stringify(filteredSearch))
@@ -161,7 +163,7 @@ function App() {
       const nameEN = i.nameEN.toLowerCase();
       const nameRU = i.nameRU.toLowerCase();
 
-      return ((nameEN.includes(inputs)) || nameRU.includes(inputs) ? i : null)
+      return ((nameEN.includes(inputs) || nameRU.includes(inputs)) ? i : null)
     })
 
     localStorage.setItem('savedFilteredMovies', JSON.stringify(filteredSearch))
