@@ -182,7 +182,7 @@ function App() {
       mainApi.saveMovie(movie)
         .then((res) => {
           setLocalSavedMovies([...localSavedMovies, res])
-          localStorage.setItem('savedMovies', localSavedMovies)
+          localStorage.setItem('savedMovies', JSON.stringify(localSavedMovies))
         })
     
       localStorage.setItem('savedMovies', localSavedMovies)
@@ -199,7 +199,7 @@ function App() {
         setLocalSavedMovies(localSavedMovies.filter((i) => i.movieId !== movie.id))
       })
     
-    localStorage.setItem('savedMovies', localSavedMovies)
+    localStorage.setItem('savedMovies', JSON.stringify(localSavedMovies))
   }
 
   function addMovies() {
