@@ -12,11 +12,6 @@ function SearchForm({ durationFilter, handleSearch }) {
     handleSearch(value);
   }
 
-  function toggleButtonState() {
-    setIsActive(!isActive)
-    durationFilter(isActive)
-  }
-
   return (
     <section className="search-form">
       <form className="search-form__container" onSubmit={(e) => handleSubmitForm(e)}>
@@ -28,7 +23,10 @@ function SearchForm({ durationFilter, handleSearch }) {
       </form>
       <div className="search-form__toggle">
         <input type="checkbox" className={`search-form__checkbox${isActive ? " search-form__checkbox_on" : ""}`} 
-          onClick={toggleButtonState}/>
+          onClick={() => {
+            setIsActive(!isActive)
+            durationFilter(isActive)
+          }}/>
         <label className="search-form__text">Короткометражки</label>
       </div>
     </section>
