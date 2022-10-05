@@ -44,6 +44,12 @@ function App() {
   }, [pathName.pathname])
 
   React.useEffect(() => {
+    if (pathName.pathname === '/saved-movies') {
+      setSavedFilteredMovies(localSavedMovies)
+    }
+  }, [pathName.pathname, localSavedMovies])
+
+  React.useEffect(() => {
     if (jwt){
       auth.checkToken(jwt)
         .then(res => {
