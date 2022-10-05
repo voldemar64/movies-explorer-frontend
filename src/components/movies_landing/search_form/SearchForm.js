@@ -22,7 +22,7 @@ function SearchForm({ durationFilter, handleSearch }) {
         <button className="search-form__button"/>
       </form>
       <div className="search-form__toggle">
-        <input type="checkbox" className={`search-form__checkbox${isActive ? " search-form__checkbox_on" : ""}`} 
+        <input type="checkbox" checked={isActive} className={`search-form__checkbox${isActive ? " search-form__checkbox_on" : ""}`} 
           onChange={() => {
             console.log(isActive)
             setIsActive(!isActive)
