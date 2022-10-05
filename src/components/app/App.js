@@ -184,6 +184,8 @@ function App() {
           setLocalSavedMovies([...localSavedMovies, res])
           localStorage.setItem('savedMovies', localSavedMovies)
         })
+    
+      localStorage.setItem('savedMovies', localSavedMovies)
     } else {
       const cardToDelete = localSavedMovies.find((i) => i.movieId === movie.id)
       handleDislikeMovie(cardToDelete)
@@ -195,8 +197,9 @@ function App() {
       .then(() => {
         setSavedFilteredMovies(savedFilteredMovies.filter((i) => i.movieId !== movie.id)) //ВОЗМОЖНО С НИЖНИМ ПОДЧЕРКИВАНИЕМ
         setLocalSavedMovies(localSavedMovies.filter((i) => i.movieId !== movie.id))
-        localStorage.setItem('savedMovies', localSavedMovies)
       })
+    
+    localStorage.setItem('savedMovies', localSavedMovies)
   }
 
   function addMovies() {
