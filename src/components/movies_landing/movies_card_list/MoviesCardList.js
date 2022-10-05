@@ -1,6 +1,6 @@
 import MoviesCard from "../movies_card/MoviesCard";
 import Preloader from "../preloader/Preloader";
-import "./MoviesCardList.css"
+import "./MoviesCardList.css";
 
 function MoviesCardList({movies, savedMovies, onSave, onDelete, addMovies, listLength}) {
 
