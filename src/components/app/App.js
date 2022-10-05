@@ -174,6 +174,7 @@ function App() {
       setApiFilteredMovies(shorts)
     } else {
       setApiFilteredMovies(filteredFilms)
+      localStorage.setItem('filteredMovies', JSON.stringify(filteredFilms))
     }
   }
 
@@ -186,6 +187,7 @@ function App() {
       setSavedFilteredMovies(shorts)
     } else {
       setSavedFilteredMovies(savedFilteredFilms)
+      localStorage.setItem('filteredMovies', JSON.stringify(savedFilteredFilms))
     }
   }
 
