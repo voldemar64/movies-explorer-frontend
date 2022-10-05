@@ -170,6 +170,7 @@ function App() {
     
     if (toggle && filteredFilms) {
       const shorts = filteredFilms.filter((i) => i.duration <= 40)
+      localStorage.setItem('filteredMovies', JSON.stringify(shorts))
       setApiFilteredMovies(shorts)
     } else {
       setApiFilteredMovies(filteredFilms)
@@ -181,6 +182,7 @@ function App() {
     
     if (toggle && savedFilteredFilms) {
       const shorts = savedFilteredFilms.filter((i) => i.duration <= 40)
+      localStorage.setItem('savedFilteredMovies', JSON.stringify(shorts))
       setSavedFilteredMovies(shorts)
     } else {
       setSavedFilteredMovies(savedFilteredFilms)
