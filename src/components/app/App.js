@@ -28,7 +28,7 @@ function App() {
   const [listLength, setListLength] = React.useState(0);
 
   const [localSavedMovies, setLocalSavedMovies] = React.useState([]);
-  const [localApiFilms, setLocalApiFilms] = React.useState([]);
+  const [localApiMovies, setLocalApiMovies] = React.useState([]);
   const [savedFilteredMovies, setSavedFilteredMovies] = React.useState([]);
   const [apiFilteredMovies, setApiFilteredMovies] = React.useState([]);
 
@@ -64,7 +64,7 @@ function App() {
         .then(movies => {
           localStorage.setItem('movies', JSON.stringify(movies));
           const allMovies = JSON.parse(localStorage.getItem('movies'));
-          setLocalApiFilms(allMovies); //ВОЗМОЖНО НЕПРАВИЛЬНО
+          setLocalApiMovies(allMovies); //ВОЗМОЖНО НЕПРАВИЛЬНО
         })
         .catch(err => console.log(`Ошибка при получении фильмов: ${err}`))
     }
@@ -128,7 +128,7 @@ function App() {
   }
 
   function handleSearch(input) {
-    const filteredSearch = localApiFilms.filter((i) => {
+    const filteredSearch = localApiMovies.filter((i) => {
       const inputs = input.toLowerCase();
       const nameEN = i.nameEN.toLowerCase();
       const nameRU = i.nameRU.toLowerCase();
@@ -141,7 +141,7 @@ function App() {
   }
 
   function handleSearchSaved(input) {
-    const filteredSearch = localApiFilms.filter((i) => {
+    const filteredSearch = localSavedMovies.filter((i) => {
       const inputs = input.toLowerCase();
       const nameEN = i.nameEN.toLowerCase();
       const nameRU = i.nameRU.toLowerCase();
@@ -181,11 +181,10 @@ function App() {
     if (!liked) {
       mainApi.saveMovie(movie)
         .then((res) => {
-          setLocalSavedMovies([...localSavedMovies, res])
-          localStorage.setItem('savedMovies', JSON.stringify(localSavedMovies))
+          localStorage.setItem('savedMovies', JSON.stringify([...localSavedMovies, res]))
+          const movies = localStorage.getItem('savedMovies');
+          setLocalSavedMovies(movies)
         })
-    
-      localStorage.setItem('savedMovies', localSavedMovies)
     } else {
       const cardToDelete = localSavedMovies.find((i) => i.movieId === movie.id)
       handleDislikeMovie(cardToDelete)
@@ -195,11 +194,11 @@ function App() {
   function handleDislikeMovie(movie) {
     mainApi.deleteMovie(movie)
       .then(() => {
-        setSavedFilteredMovies(savedFilteredMovies.filter((i) => i.movieId !== movie.id)) //ВОЗМОЖНО С НИЖНИМ ПОДЧЕРКИВАНИЕМ
-        setLocalSavedMovies(localSavedMovies.filter((i) => i.movieId !== movie.id))
+        localStorage.setItem('savedMovies', JSON.stringify(savedFilteredMovies.filter((i) => i.movieId !== movie.id)))
+        const movies = localStorage.getItem('savedMovies');
+        setSavedFilteredMovies(savedFilteredMovies.filter((i) => i.movieId !== movie.id))
+        setLocalSavedMovies(movies)
       })
-    
-    localStorage.setItem('savedMovies', JSON.stringify(localSavedMovies))
   }
 
   function addMovies() {
