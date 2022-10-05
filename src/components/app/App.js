@@ -47,7 +47,7 @@ function App() {
     if (pathName.pathname === '/saved-movies') {
       setSavedFilteredMovies(localSavedMovies)
     }
-  }, [pathName.pathname, localSavedMovies])
+  }, [pathName.pathname])
 
   React.useEffect(() => {
     if (jwt){
