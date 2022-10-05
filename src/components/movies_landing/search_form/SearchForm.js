@@ -24,7 +24,7 @@ function SearchForm({ durationFilter, handleSearch }) {
       <div className="search-form__toggle">
         <input type="checkbox" className={`search-form__checkbox${isActive ? " search-form__checkbox_on" : ""}`} 
           onClick={() => {
-            setIsActive(!isActive)
+            setIsActive(isActive === false ? true : false)
             durationFilter(isActive)
           }}/>
         <label className="search-form__text">Короткометражки</label>
