@@ -182,7 +182,7 @@ function App() {
     if (!liked) {
       mainApi.saveMovie(movie)
         .then((res) => {
-          localStorage.setItem('savedMovies', JSON.stringify(...localSavedMovies, res))
+          localStorage.setItem('savedMovies', JSON.stringify([...localSavedMovies, res]))
           const movies = localStorage.getItem('savedMovies');
           setLocalSavedMovies(movies)
         })
