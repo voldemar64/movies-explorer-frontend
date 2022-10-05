@@ -150,12 +150,12 @@ function App() {
     })
 
     localStorage.setItem('savedFilteredMovies', JSON.stringify(filteredSearch))
-    const filteredMovies = localStorage.getItem('savedFilteredMovies')
-    setSavedFilteredMovies(filteredMovies)
+    const filteredMovies = JSON.parse(localStorage.getItem('savedFilteredMovies'))
+    setSavedFilteredMovies(filteredMovies.length !== 0 ? filteredMovies : localSavedMovies)
   }
 
   function durationFilter(toggle) {
-    const filteredFilms = localStorage.getItem('filteredMovies')
+    const filteredFilms = JSON.parse(localStorage.getItem('filteredMovies'))
     
     if (toggle && filteredFilms) {
       const shorts = filteredFilms.filter((i) => i.duration <= 40)
@@ -166,7 +166,7 @@ function App() {
   }
 
   function savedDurationFilter(toggle) {
-    const savedFilteredFilms = localStorage.getItem('savedFilteredMovies')
+    const savedFilteredFilms = JSON.parse(localStorage.getItem('savedFilteredMovies'))
     
     if (toggle && savedFilteredFilms) {
       const shorts = savedFilteredFilms.filter((i) => i.duration <= 40)
@@ -183,8 +183,8 @@ function App() {
       mainApi.saveMovie(movie)
         .then((res) => {
           localStorage.setItem('savedMovies', JSON.stringify([...localSavedMovies, res]))
-          const movies = localStorage.getItem('savedMovies');
-          setLocalSavedMovies(Array.from(movies))
+          const movies = JSON.parse(localStorage.getItem('savedMovies'))
+          setLocalSavedMovies(movies)
         })
     } else {
       const cardToDelete = localSavedMovies.find((i) => i.movieId === movie.id)
@@ -197,8 +197,8 @@ function App() {
       .then(() => {
         localStorage.setItem('savedMovies', JSON.stringify(localSavedMovies.filter((i) => i.movieId !== movie.id)))
         localStorage.setItem('savedFilteredMovies', JSON.stringify(savedFilteredMovies.filter((i) => i.movieId !== movie.id)))
-        const movies = localStorage.getItem('savedMovies');
-        const filteredMovies = localStorage.getItem('savedFilteredMovies');
+        const movies = JSON.parse(localStorage.getItem('savedMovies'));
+        const filteredMovies = JSON.parse(localStorage.getItem('savedFilteredMovies'));
         setSavedFilteredMovies(filteredMovies)
         setLocalSavedMovies(movies)
       })
@@ -262,7 +262,7 @@ function App() {
               component={SavedMovies}
               durationFilter={savedDurationFilter}
               handleSearch={handleSearchSaved}
-              movies={localSavedMovies}
+              movies={savedFilteredMovies}
               savedMovies={localSavedMovies}
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
