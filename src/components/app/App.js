@@ -171,7 +171,6 @@ function App() {
 
   function durationFilter(toggle) {
     const filteredFilms = JSON.parse(localStorage.getItem('filteredMovies'))
-    console.log(toggle);
     
     if (toggle && filteredFilms) {
       const shorts = filteredFilms.filter((i) => i.duration <= 40)
@@ -183,7 +182,6 @@ function App() {
 
   function savedDurationFilter(toggle) {
     const savedFilteredFilms = JSON.parse(localStorage.getItem('savedFilteredMovies'))
-    console.log(toggle);
 
     if (toggle && savedFilteredFilms) {
       const shorts = savedFilteredFilms.filter((i) => i.duration <= 40)
