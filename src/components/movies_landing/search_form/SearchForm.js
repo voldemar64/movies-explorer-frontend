@@ -13,8 +13,8 @@ function SearchForm({ durationFilter, handleSearch }) {
   }
 
   function toggleButtonState() {
-    setIsActive(!isActive);
     durationFilter(isActive)
+    setIsActive(!isActive)
   }
 
   return (
