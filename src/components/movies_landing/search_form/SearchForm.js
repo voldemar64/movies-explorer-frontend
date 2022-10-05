@@ -9,8 +9,8 @@ function SearchForm({ durationFilter, handleSearch }) {
 
   function handleSubmitForm(e) {
     e.preventDefault();
-    setIsActive(false);
     handleSearch(value);
+    setIsActive(false);
   }
 
   function toggleButtonState() {
