@@ -35,6 +35,7 @@ function App() {
   const history = useHistory();
   const { width } = useWindowWidth();
   const pathName = useLocation();
+  const jwt = localStorage.getItem("jwt");
 
   React.useEffect(() => {
     if (pathName.pathname === '/movies') {
@@ -42,10 +43,9 @@ function App() {
     } else if (pathName.pathname === '/saved-movies') {
       setSavedFilteredMovies(localSavedMovies)
     }
-  }, [pathName.pathname])
+  }, [pathName.pathname, localSavedMovies])
 
   React.useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
     if (jwt){
       auth.checkToken(jwt)
         .then(res => {
@@ -55,7 +55,7 @@ function App() {
         })
         .catch(err => console.log(`Не получается токен: ${err}`))
     }
-  }, [])
+  }, [jwt])
 
   React.useEffect(() => {
     if (loggedIn) {
