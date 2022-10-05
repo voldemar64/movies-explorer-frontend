@@ -1,4 +1,4 @@
-import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import React from "react";
 
 
@@ -34,14 +34,7 @@ function App() {
 
   const history = useHistory();
   const { width } = useWindowWidth();
-  const pathName = useLocation();
   const jwt = localStorage.getItem("jwt");
-
-  React.useEffect(() => {
-    if (pathName.pathname === '/movies') {
-      setApiFilteredMovies([])
-    }
-  }, [pathName.pathname])
 
   React.useEffect(() => {
     if (jwt){
