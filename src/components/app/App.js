@@ -178,14 +178,13 @@ function App() {
 
   function handleLikeMovie(movie) {
     const liked = localSavedMovies.some((i) => movie.id === i.movieId);
-    console.log(movie);
 
     if (!liked) {
       mainApi.saveMovie(movie)
         .then((res) => {
           localStorage.setItem('savedMovies', JSON.stringify([...localSavedMovies, res]))
           const movies = localStorage.getItem('savedMovies');
-          setLocalSavedMovies(movies)
+          setLocalSavedMovies(Array.from(movies))
         })
     } else {
       const cardToDelete = localSavedMovies.find((i) => i.movieId === movie.id)
