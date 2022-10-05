@@ -29,7 +29,7 @@ function App() {
 
   const [localSavedMovies, setLocalSavedMovies] = React.useState([]);
   const [localApiMovies, setLocalApiMovies] = React.useState([]);
-  const [savedFilteredMovies, setSavedFilteredMovies] = React.useState([]);
+  const [savedFilteredMovies, setSavedFilteredMovies] = React.useState(localSavedMovies);
   const [apiFilteredMovies, setApiFilteredMovies] = React.useState([]);
 
   const history = useHistory();
