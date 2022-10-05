@@ -80,7 +80,7 @@ function App() {
         })
         .catch(err => console.log(`Ошибка при получении сохранённых фильмов: ${err}`))
     }
-  }, [])
+  }, [loggedIn, currentUser])
 
   React.useEffect(() => {
     if (width >= 1280) {
@@ -180,7 +180,10 @@ function App() {
 
     if (!liked) {
       mainApi.saveMovie(movie)
-        .then(res => setLocalSavedMovies([...localSavedMovies, res]))
+        .then((res) => {
+          setLocalSavedMovies([...localSavedMovies, res])
+          localStorage.setItem('savedMovies', localSavedMovies)
+        })
     } else {
       const cardToDelete = localSavedMovies.find((i) => i.movieId === movie.id)
       handleDislikeMovie(cardToDelete)
@@ -192,6 +195,7 @@ function App() {
       .then(() => {
         setSavedFilteredMovies(savedFilteredMovies.filter((i) => i.movieId !== movie.id)) //ВОЗМОЖНО С НИЖНИМ ПОДЧЕРКИВАНИЕМ
         setLocalSavedMovies(localSavedMovies.filter((i) => i.movieId !== movie.id))
+        localStorage.setItem('savedMovies', localSavedMovies)
       })
   }
 
