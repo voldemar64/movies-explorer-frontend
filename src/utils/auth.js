@@ -1,6 +1,6 @@
 export const BASE_URL = 'https://api.movies.vova.nomoredomains.sbs'
 
-export function register(email, password, name) {
+export function register(name, email, password) {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
