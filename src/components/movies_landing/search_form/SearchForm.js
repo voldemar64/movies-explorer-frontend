@@ -4,7 +4,7 @@ import React from "react";
 function SearchForm({ durationFilter, handleSearch }) {
 
 
-  const [isActive, setIsActive] = React.useState(true);
+  const [isActive, setIsActive] = React.useState(false);
   const [value, setValue] = React.useState('');
 
   function handleSubmitForm(e) {
