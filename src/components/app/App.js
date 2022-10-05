@@ -40,7 +40,11 @@ function App() {
   React.useEffect(() => {
     if (pathName.pathname === '/movies') {
       setApiFilteredMovies([])
-    } else if (pathName.pathname === '/saved-movies') {
+    }
+  }, [pathName.pathname])
+
+  React.useEffect(() => {
+    if (pathName.pathname === '/saved-movies') {
       setSavedFilteredMovies(localSavedMovies)
     }
   }, [pathName.pathname, localSavedMovies])
