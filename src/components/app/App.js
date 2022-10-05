@@ -187,7 +187,7 @@ function App() {
       setSavedFilteredMovies(shorts)
     } else {
       setSavedFilteredMovies(savedFilteredFilms)
-      localStorage.setItem('filteredMovies', JSON.stringify(savedFilteredFilms))
+      localStorage.setItem('savedFilteredMovies', JSON.stringify(savedFilteredFilms))
     }
   }
 
