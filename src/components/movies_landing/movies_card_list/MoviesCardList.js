@@ -8,13 +8,13 @@ function MoviesCardList({movies, savedMovies, onSave, onDelete, addMovies, listL
     <section className="movies">
       {movies.length!==0 ?
       <ul className="cards">
-        {movies.forEach((card) => {
+        {movies.slice(0, listLength).forEach((card) => {
           return (
             <MoviesCard card={card} savedMovies={savedMovies}
               onSave={onSave} onDelete={onDelete}
             />
           )
-        }).slice(0, listLength)
+        })
         }
       </ul>
       : <></>

@@ -150,7 +150,8 @@ function App() {
     })
 
     localStorage.setItem('savedFilteredMovies', JSON.stringify(filteredSearch))
-    setSavedFilteredMovies(filteredSearch.length !== 0 ? filteredSearch : localSavedMovies)
+    const filteredMovies = localStorage.getItem('savedFilteredMovies')
+    setSavedFilteredMovies(filteredMovies)
   }
 
   function durationFilter(toggle) {
