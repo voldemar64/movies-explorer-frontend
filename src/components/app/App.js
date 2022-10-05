@@ -194,9 +194,11 @@ function App() {
   function handleDislikeMovie(movie) {
     mainApi.deleteMovie(movie)
       .then(() => {
-        localStorage.setItem('savedMovies', JSON.stringify(savedFilteredMovies.filter((i) => i.movieId !== movie.id)))
+        localStorage.setItem('savedMovies', JSON.stringify(localSavedMovies.filter((i) => i.movieId !== movie.id)))
+        localStorage.setItem('savedFilteredMovies', JSON.stringify(savedFilteredMovies.filter((i) => i.movieId !== movie.id)))
         const movies = localStorage.getItem('savedMovies');
-        setSavedFilteredMovies(savedFilteredMovies.filter((i) => i.movieId !== movie.id))
+        const filteredMovies = localStorage.getItem('savedFilteredMovies');
+        setSavedFilteredMovies(filteredMovies)
         setLocalSavedMovies(movies)
       })
   }
