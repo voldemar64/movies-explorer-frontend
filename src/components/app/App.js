@@ -29,7 +29,7 @@ function App() {
 
   const [localSavedMovies, setLocalSavedMovies] = React.useState([]);
   const [localApiMovies, setLocalApiMovies] = React.useState([]);
-  const [savedFilteredMovies, setSavedFilteredMovies] = React.useState(localSavedMovies);
+  const [savedFilteredMovies, setSavedFilteredMovies] = React.useState([]);
   const [apiFilteredMovies, setApiFilteredMovies] = React.useState([]);
 
   const history = useHistory();
@@ -75,8 +75,10 @@ function App() {
       mainApi.getSavedMovies()
         .then(movies => {
           localStorage.setItem('savedMovies', JSON.stringify(movies.filter((e) => e.owner === currentUser._id)));
-          const userMovies = JSON.parse(localStorage.getItem('savedMovies'))
+          localStorage.setItem('savedFilteredMovies', JSON.stringify(movies.filter((e) => e.owner === currentUser._id)));
+          const userMovies = JSON.parse(localStorage.getItem('savedMovies'));
           setLocalSavedMovies(userMovies);
+          setSavedFilteredMovies(userMovies);
         })
         .catch(err => console.log(`Ошибка при получении сохранённых фильмов: ${err}`))
     }
