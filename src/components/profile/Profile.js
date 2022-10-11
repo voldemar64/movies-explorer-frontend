@@ -6,6 +6,15 @@ function Profile({ onSubmit, signOut }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [userName, setUserName] = React.useState(currentUser.name);
   const [userEmail, setUserEmail] = React.useState(currentUser.email);
+  const [disableForm, setDisabledForm] = React.useState(true);
+
+  React.useEffect(() => {
+    if(userName !== currentUser.name || userEmail !== currentUser.email) {
+      setDisabledForm(false)
+    } else {
+      setDisabledForm(true)
+    }
+  }, [userName, userEmail])
   
   function handleChangeName(evt) {
     setUserName(evt.target.value);
@@ -32,7 +41,8 @@ function Profile({ onSubmit, signOut }) {
           <label className="profile__label">E-mail</label>
           <input className="profile__input" required type="text" value={userEmail} onChange={handleChangeEmail}/>
         </div>
-        <button className="profile__submit" type="submit">Редактировать</button>
+        <button className={`profile__submit${disableForm ? " profile__submit_disabled" : ''}`}
+          type="submit" disabled={disableForm}>Редактировать</button>
       </form>
       <button className="profile__signout" onClick={signOut}>Выйти из аккаунта</button>
     </section>
