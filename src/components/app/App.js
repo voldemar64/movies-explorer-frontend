@@ -53,7 +53,7 @@ function App() {
   const token = localStorage.getItem("jwt");
 
   React.useEffect(() => {
-    if (token){
+    if (token) {
       mainApi.getUserInfo()
         .then(res => {
           if (res) {
@@ -254,7 +254,7 @@ function App() {
     mainApi.patchUserInfo(user)
       .then(res => {
         if (res) {
-          setCurrentUser(res)
+          setCurrentUser(res.user)
           setPopupTitle('Данные пользователя изменены')
           setPopupPhoto(tick)
           setIsInfoTooltipOpen(true)
