@@ -82,7 +82,7 @@
 }
 
 .preloader__round::before {
-  z-index: 10;
+  z-index: 2;
   background: #4285F4;
   animation: preloader-inside-red 1s ease-in-out infinite;
 }
