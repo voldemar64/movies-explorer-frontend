@@ -323,7 +323,8 @@ function App() {
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
               listLength={listLength}
-              loggedIn={tokenChecked}
+              logggedIn={loggedIn}
+              tokenChecked={tokenChecked}
             />
           </Route>
           <Route path="/saved-movies">
@@ -336,7 +337,8 @@ function App() {
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
               listLength={listLength}
-              loggedIn={tokenChecked}
+              loggedIn={loggedIn}
+              tokenChecked={tokenChecked}
             />
           </Route>
           <Route path="/profile">
@@ -344,7 +346,8 @@ function App() {
               component={Profile}
               onSubmit={handleEditProfile}
               signOut={handleSignOut}
-              loggedIn={tokenChecked}
+              loggedIn={loggedIn}
+              tokenChecked={tokenChecked}
             />
           </Route>
           <Route path="*">
