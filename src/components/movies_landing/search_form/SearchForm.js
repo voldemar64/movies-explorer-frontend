@@ -22,6 +22,7 @@ function SearchForm({ durationFilter, handleSearch }) {
   React.useEffect(() => {
     if (pathName.pathname === "/movies") {
       handleSearch(value)
+      console.log(isActive)
       durationFilter(isActive)
     } else if (pathName.pathname === "/saved-movies") {
       setValue('')
