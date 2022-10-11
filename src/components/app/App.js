@@ -160,7 +160,7 @@ function App() {
   function handleSignOut() {
     setTokenChecked(false)
     setLoggedIn(false)
-    setCurrentUser(null)
+    setCurrentUser({})
     setSavedFilteredMovies([])
     setApiFilteredMovies([])
     setLocalSavedMovies([])
