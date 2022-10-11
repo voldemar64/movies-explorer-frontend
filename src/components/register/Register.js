@@ -1,8 +1,8 @@
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import React from "react";
 
-function Login({ submit }) {
+function Login({ submit, loggedIn }) {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -13,6 +13,7 @@ function Login({ submit }) {
   }
 
   return(
+    !loggedIn ?
     <section className="register">
       <Link className="register__logo" to="/"></Link>
       <h2 className="register__title">Добро пожаловать!</h2>
@@ -49,7 +50,8 @@ function Login({ submit }) {
       <p className="register__text">Уже зарегистрированы? 
         <Link to="/signin" className="register__link">Войти</Link>
       </p>
-    </section>
+    </section> :
+    <Redirect to="/"/>
   )
 }
 

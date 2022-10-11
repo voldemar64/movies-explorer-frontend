@@ -64,6 +64,8 @@ function App() {
           if (res) {
             setTokenChecked(true)
             setLoggedIn(true)
+          } else {
+            setTokenChecked(true)
           }
         })
         .catch(err => {
@@ -305,11 +307,13 @@ function App() {
           <Route path="/signin">
             <Login
               submit={handleLogin}
+              loggedIn={loggedIn}
             />
           </Route>
           <Route path="/signup">
             <Register
               submit={handleRegister}
+              loggedIn={loggedIn}
             />
           </Route>
           <Route exact path="/movies">
