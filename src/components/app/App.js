@@ -59,7 +59,7 @@ function App() {
         })
         .catch(err => console.log(`Не получается токен: ${err}`))
     }
-  }, [])
+  }, [jwt])
 
   React.useEffect(() => {
     if (loggedIn) {

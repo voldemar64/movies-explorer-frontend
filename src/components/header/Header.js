@@ -5,6 +5,7 @@ import profilePath from "../../images/profile.svg";
 function Header({ onSideBarOpen, isLogged, windowWidth }) {
   const pathName = useLocation();
   const { width } = windowWidth();
+  console.log(isLogged);
   
   return (
     (pathName.pathname === "/" ||
