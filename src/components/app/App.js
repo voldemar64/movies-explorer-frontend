@@ -12,15 +12,22 @@ import Profile from "../profile/Profile";
 import NotFound from "../not_found/NotFound";
 import Footer from "../footer/Footer";
 import SideBar from "../sidebar/SideBar";
+import InfoTooltip from "../infotooltip/InfoTooltip";
 import ProtectedRoute from "../protected_route/ProtectedRoute";
 import { useWindowWidth } from "../../utils/windowWidth";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import mainApi  from "../../utils/MainApi";
 import moviesApi from "../../utils/MoviesApi";
 import * as auth from "../../utils/auth";
+import tick from '../../images/tick.svg';
+import cross from '../../images/cross.svg';
 
 function App() {
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
+  const [popupTitle, setPopupTitle] = React.useState('')
+  const [popupPhoto, setPopupPhoto] = React.useState('')
+
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [tokenChecked, setTokenCheked] = React.useState(false);
@@ -120,20 +127,41 @@ function App() {
 
   function handleRegister(name, email, password) {
     auth.register(name, email, password)
-      .then(() => {
-        handleLogin(email, password)
+      .then((res) => {
+        if (res) {
+          setPopupTitle('Вы успешно зарегистрировались!')
+          setPopupPhoto(tick)
+          handleLogin(email, password)
+        } else {
+          setPopupTitle('Что-то пошло не так! Попробуйте ещё раз.')
+          setPopupPhoto(cross)
+        }
       })
-      .catch(() => console.log('Что-то пошло не так! Попробуйте ещё раз.'))
+      .catch(() => {
+        setPopupTitle('Что-то пошло не так! Попробуйте ещё раз.')
+        setPopupPhoto(cross)
+      })
+      .finally(setIsInfoTooltipOpen(true))
   }
 
   function handleLogin(email, password) {
     auth.authorize(email, password)
       .then(res => {
-        localStorage.setItem('jwt', res.token)
-        setLoggedIn(true)
-        history.push('/movies')
+        if (res) {
+          localStorage.setItem('jwt', res.token)
+          setLoggedIn(true)
+          history.push('/movies')
+        } else {
+          setPopupTitle('Что-то пошло не так! Попробуйте ещё раз.')
+          setPopupPhoto(cross)
+          setIsInfoTooltipOpen(true)
+        }
       })
-      .catch(() => console.log('Что-то пошло не так! Попробуйте ещё раз.'))
+      .catch(() => {
+        setPopupTitle('Что-то пошло не так! Попробуйте ещё раз.')
+        setPopupPhoto(cross)
+        setIsInfoTooltipOpen(true)
+      })
   }
 
   function handleSignOut() {
@@ -234,14 +262,32 @@ function App() {
   function handleEditProfile(user) {
     mainApi.patchUserInfo(user)
       .then(res => {
-        setCurrentUser(res)
-        alert('Данные профиля изменены.')
+        if (res) {
+          setCurrentUser(res)
+          setPopupTitle('Данные пользователя изменены')
+          setPopupPhoto(tick)
+          setIsInfoTooltipOpen(true)
+        }
       })
-      .catch(err => alert(`Произошла ошибка: ${err}`))
+      .catch(err => {
+        setPopupTitle(`произошла ошибка: ${err}`)
+        setPopupPhoto(tick)
+        setIsInfoTooltipOpen(true)
+      })
   }
 
   function handleSideBar() {
     setIsSideBarOpen(!isSideBarOpen)
+  }
+
+  function handleInfoTooltip() {
+    setIsInfoTooltipOpen(false)
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target.classList.contains('popup')) {
+      handleInfoTooltip()
+    }
   }
 
   return (
@@ -307,6 +353,15 @@ function App() {
         </Switch>
       </main>
       <Footer/>
+
+      <InfoTooltip
+        isOpen={isInfoTooltipOpen}
+        onClose={handleInfoTooltip}
+        onOverlayClick={handleOverlayClick}
+        title={popupTitle}
+        photo={popupPhoto}
+      />
+
       <SideBar
         isOpen={isSideBarOpen}
         onClose={handleSideBar}
