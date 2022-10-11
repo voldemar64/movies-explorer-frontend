@@ -63,6 +63,12 @@
   transition: opacity .3s linear;
 }
 
+.profile__submit_disabled {
+  opacity: 0.6;
+  background-color: rgba(139, 139, 139, 1);
+  cursor: default;
+}
+
 .profile__submit:hover {
   opacity: .5;
 }
