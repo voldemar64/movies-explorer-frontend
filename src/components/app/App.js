@@ -171,6 +171,8 @@ function App() {
     localStorage.removeItem('filteredMovies')
     localStorage.removeItem('savedFilteredMovies')
     localStorage.removeItem('jwt')
+    localStorage.removeItem('savedCheck')
+    localStorage.removeItem('savedSearchValue')
     history.push('/')
   }
 
