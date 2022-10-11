@@ -21,6 +21,7 @@ function Login({ submit, loggedIn }) {
         <div className="register__container">
           <label className="register__label">Имя</label>
           <input
+            name="name"
             required
             type="text"
             className="register__input"
@@ -30,6 +31,7 @@ function Login({ submit, loggedIn }) {
         <div className="register__container">
           <label className="register__label">E-mail</label>
           <input
+            name="email"
             required
             type="email"
             className="register__input"
@@ -39,6 +41,7 @@ function Login({ submit, loggedIn }) {
         <div className="register__container">
           <label className="register__label">Пароль</label>
           <input
+            name="password"
             required
             type="password"
             className="register__input"
