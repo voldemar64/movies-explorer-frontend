@@ -59,11 +59,12 @@ function App() {
   React.useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token){
-      auth.checkToken(token)
+      mainApi.getUserInfo()
         .then(res => {
           if (res) {
             setTokenChecked(true)
             setLoggedIn(true)
+            setCurrentUser(res)
           } else {
             setTokenChecked(true)
           }
@@ -76,16 +77,6 @@ function App() {
       setTokenChecked(true)
     }
   }, [])
-
-  React.useEffect(() => {
-    if (loggedIn) {
-      mainApi.getUserInfo()
-      .then((userData) => {
-        setCurrentUser(userData)
-      })
-      .catch(err => console.log(`Ошибка при изначальной отрисовке данных: ${err}`));
-    }
-  }, [loggedIn])
 
   React.useEffect(() => {
     if (loggedIn && !(localStorage.getItem('movies'))) {
@@ -109,10 +100,7 @@ function App() {
           setLocalSavedMovies(userMovies);
           setSavedFilteredMovies(userMovies);
         })
-        .catch(err => {
-          console.log(currentUser)
-          console.log(`Ошибка при получении сохранённых фильмов: ${err}`)
-        })
+        .catch(err => console.log(`Ошибка при получении сохранённых фильмов: ${err}`))
     }
   }, [loggedIn, currentUser])
 
