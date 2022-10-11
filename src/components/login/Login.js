@@ -39,7 +39,7 @@ function Login({ submit, loggedIn }) {
             onChange={handleChange}
           />
         </div>
-        <button className={`register__button register__button_type_big${!isValid && ' register__button_disabled'}`}
+        <button className={`register__button register__button_type_big${!isValid ? ' register__button_disabled' : ''}`}
           type="submit" disabled={!isValid}>Войти</button>
       </form>
       <p className="register__text">Ещё не зарегистрированы? <Link to="/signup" className="register__link">Регистрация</Link></p>
