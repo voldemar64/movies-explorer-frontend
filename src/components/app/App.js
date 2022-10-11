@@ -35,6 +35,7 @@ function App() {
   const history = useHistory();
   const { width } = useWindowWidth();
   const pathName = useLocation();
+  const jwt = localStorage.getItem("jwt");
 
   React.useEffect(() => {
     if (pathName.pathname === '/movies') {
@@ -241,7 +242,7 @@ function App() {
       <Header
         onSideBarOpen={handleSideBar}
         windowWidth={useWindowWidth}
-        isLogged={loggedIn}
+        isLogged={jwt}
       />
       <main className="main">
         <Switch>
@@ -269,7 +270,7 @@ function App() {
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
               listLength={listLength}
-              loggedIn={loggedIn}
+              loggedIn={jwt}
             />
           </Route>
           <Route path="/saved-movies">
@@ -282,7 +283,7 @@ function App() {
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
               listLength={listLength}
-              loggedIn={loggedIn}
+              loggedIn={jwt}
             />
           </Route>
           <Route path="/profile">
@@ -290,7 +291,7 @@ function App() {
               component={Profile}
               onSubmit={handleEditProfile}
               signOut={handleSignOut}
-              loggedIn={loggedIn}
+              loggedIn={jwt}
             />
           </Route>
           <Route path="*">
