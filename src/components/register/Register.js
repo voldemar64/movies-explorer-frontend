@@ -1,15 +1,16 @@
 import "./Register.css";
 import { Link, Redirect } from "react-router-dom";
-import React from "react";
+import {useFormWithValidation} from "../../utils/formValidator";
 
 function Login({ submit, loggedIn }) {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const {values, handleChange, isValid} = 
+    useFormWithValidation()
 
   function handleSubmit(e) {
     e.preventDefault();
-    submit(name, email, password);
+    if (isValid) {
+      submit(values);
+    }
   }
 
   return(
@@ -25,7 +26,7 @@ function Login({ submit, loggedIn }) {
             required
             type="text"
             className="register__input"
-            onChange={(e) => setName(e.target.value)}
+            onChange={handleChange}
           />
         </div>
         <div className="register__container">
@@ -35,7 +36,7 @@ function Login({ submit, loggedIn }) {
             required
             type="email"
             className="register__input"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
           />
         </div>
         <div className="register__container">
@@ -45,10 +46,11 @@ function Login({ submit, loggedIn }) {
             required
             type="password"
             className="register__input"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChange}
           />
         </div>
-        <button className="register__button" type="submit">Зарегистрироваться</button>
+        <button className={`register__button${!isValid && ' register__button_disabled'}`} 
+          type="submit" disabled={!isValid}>Зарегистрироваться</button>
       </form>
       <p className="register__text">Уже зарегистрированы? 
         <Link to="/signin" className="register__link">Войти</Link>

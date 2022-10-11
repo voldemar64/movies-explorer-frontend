@@ -1,14 +1,16 @@
 import "../register/Register.css";
 import { Link, Redirect } from "react-router-dom";
-import React from "react";
+import {useFormWithValidation} from "../../utils/formValidator";
 
 function Login({ submit, loggedIn }) {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const {values, handleChange, isValid} = 
+    useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
-    submit(email, password);
+    if (isValid) {
+      submit(values);
+    }
   }
 
   return(
@@ -24,7 +26,7 @@ function Login({ submit, loggedIn }) {
             required
             type="email"
             className="register__input"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
           />
         </div>
         <div className="register__container">
@@ -34,10 +36,11 @@ function Login({ submit, loggedIn }) {
             required
             type="password"
             className="register__input"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChange}
           />
         </div>
-        <button className="register__button register__button_type_big" type="submit">Войти</button>
+        <button className={`register__button register__button_type_big${!isValid && ' register__button_disabled'}`}
+          type="submit" disabled={!isValid}>Войти</button>
       </form>
       <p className="register__text">Ещё не зарегистрированы? <Link to="/signup" className="register__link">Регистрация</Link></p>
     </section> :
