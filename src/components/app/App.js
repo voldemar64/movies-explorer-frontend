@@ -83,13 +83,12 @@ function App() {
       moviesApi.getMovies()
         .then(movies => {
           localStorage.setItem('movies', JSON.stringify(movies));
-          const allMovies = JSON.parse(localStorage.getItem('movies'));
-          setLocalApiMovies(allMovies);
         })
         .catch(err => console.log(`Ошибка при получении фильмов: ${err}`))
-    } else {
-      setLocalApiMovies(JSON.parse(localStorage.getItem('movies')))
     }
+    
+    const allMovies = JSON.parse(localStorage.getItem('movies'));
+    setLocalApiMovies(allMovies);
   }, [loggedIn])
 
   React.useEffect(() => {
