@@ -54,12 +54,6 @@ function App() {
   const token = localStorage.getItem("jwt");
 
   React.useEffect(() => {
-    if (pathName.pathname === '/movies') {
-      setApiFilteredMovies([])
-    }
-  }, [pathName.pathname])
-
-  React.useEffect(() => {
     if (pathName.pathname === '/saved-movies') {
       setSavedFilteredMovies(localSavedMovies)
     }
