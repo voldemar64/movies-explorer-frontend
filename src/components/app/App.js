@@ -30,7 +30,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const [tokenChecked, setTokenCheked] = React.useState(false);
+  const [tokenChecked, setTokenChecked] = React.useState(false);
 
   const [moviesNumber, setMoviesNumber] = React.useState(0);
   const [listLength, setListLength] = React.useState(0);
@@ -62,16 +62,16 @@ function App() {
       auth.checkToken(token)
         .then(res => {
           if (res) {
-            setTokenCheked(true)
+            setTokenChecked(true)
             setLoggedIn(true)
           }
         })
         .catch(err => {
-          setTokenCheked(true)
+          setTokenChecked(true)
           console.log(`Не получается токен: ${err}`)
         })
     } else {
-      setTokenCheked(true)
+      setTokenChecked(true)
     }
   }, [])
 
@@ -165,7 +165,7 @@ function App() {
   }
 
   function handleSignOut() {
-    setTokenCheked(false)
+    setTokenChecked(false)
     setLoggedIn(false)
     setCurrentUser(null)
     setSavedFilteredMovies([])
