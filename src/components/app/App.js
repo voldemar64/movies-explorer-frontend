@@ -154,14 +154,13 @@ function App() {
         } else {
           setPopupTitle('Что-то пошло не так! Попробуйте ещё раз.')
           setPopupPhoto(cross)
-          setIsInfoTooltipOpen(true)
         }
       })
       .catch(() => {
         setPopupTitle('Что-то пошло не так! Попробуйте ещё раз.')
         setPopupPhoto(cross)
-        setIsInfoTooltipOpen(true)
       })
+      .finally(setIsInfoTooltipOpen(true))
   }
 
   function handleSignOut() {
