@@ -58,23 +58,19 @@ function App() {
 
   React.useEffect(() => {
     const token = localStorage.getItem("jwt");
-    if (token){
-      auth.checkToken(token)
-        .then(res => {
-          if (res) {
-            setTokenChecked(true)
-            setLoggedIn(true)
-          } else {
-            setTokenChecked(true)
-          }
-        })
-        .catch(err => {
+    auth.checkToken(token)
+      .then(res => {
+        if (res) {
           setTokenChecked(true)
-          console.log(`Не получается токен: ${err}`)
-        })
-    } else {
-      setTokenChecked(true)
-    }
+          setLoggedIn(true)
+        } else {
+          setTokenChecked(true)
+        }
+      })
+      .catch(err => {
+        setTokenChecked(true)
+        console.log(`Не получается токен: ${err}`)
+      })
   }, [])
 
   React.useEffect(() => {
