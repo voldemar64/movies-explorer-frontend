@@ -15,6 +15,7 @@ function SearchForm({ durationFilter, handleSearch }) {
     if (pathName.pathname === "/movies") {
       localStorage.setItem('savedSearchValue', value)
       localStorage.setItem('savedCheck', isActive)
+      console.log(isActive)
     }
   }, [value, isActive])
 
