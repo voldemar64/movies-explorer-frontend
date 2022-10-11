@@ -79,7 +79,7 @@ function App() {
     if (loggedIn) {
       mainApi.getUserInfo()
       .then((userData) => {
-        setCurrentUser(userData.user)
+        setCurrentUser(userData)
       })
       .catch(err => console.log(`Ошибка при изначальной отрисовке данных: ${err}`));
     }
