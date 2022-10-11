@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import Loader from "../loader_spin/Loader";
 
 function ProtectedRoute({ component: Component, ...props }) {

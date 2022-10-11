@@ -72,11 +72,11 @@ function App() {
           }
         })
         .catch(err => {
-          setTokenChecked(true)
+          setTokenChecked(false)
           console.log(`Не получается токен: ${err}`)
         })
     } else {
-      setTokenChecked(true)
+      setTokenChecked(false)
     }
   }, [token])
 
