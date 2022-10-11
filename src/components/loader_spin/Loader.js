@@ -3,9 +3,9 @@ import './Loader.css'
 
 const Loader = () => {
     return (
-        <div className="preloader">
-            <div className="preloader__container">
-                <span className="preloader__round"></span>
+        <div className="loader">
+            <div className="loader__container">
+                <span className="loader__round"></span>
             </div>
         </div>
     )
