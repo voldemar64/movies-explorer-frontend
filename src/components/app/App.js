@@ -23,6 +23,7 @@ function App() {
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [tokenChecked, setTokenCheked] = React.useState(false);
 
   const [moviesNumber, setMoviesNumber] = React.useState(0);
   const [listLength, setListLength] = React.useState(0);
@@ -35,7 +36,6 @@ function App() {
   const history = useHistory();
   const { width } = useWindowWidth();
   const pathName = useLocation();
-  const jwt = localStorage.getItem("jwt");
 
   React.useEffect(() => {
     if (pathName.pathname === '/movies') {
@@ -51,6 +51,7 @@ function App() {
 
   React.useEffect(() => {
     const token = localStorage.getItem("jwt");
+    setTokenCheked(true)
     if (token){
       auth.checkToken(token)
         .then(res => {
@@ -242,7 +243,7 @@ function App() {
       <Header
         onSideBarOpen={handleSideBar}
         windowWidth={useWindowWidth}
-        isLogged={jwt}
+        isLogged={loggedIn}
       />
       <main className="main">
         <Switch>
@@ -270,7 +271,7 @@ function App() {
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
               listLength={listLength}
-              loggedIn={jwt}
+              loggedIn={tokenChecked}
             />
           </Route>
           <Route path="/saved-movies">
@@ -283,7 +284,7 @@ function App() {
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
               listLength={listLength}
-              loggedIn={jwt}
+              loggedIn={tokenChecked}
             />
           </Route>
           <Route path="/profile">
@@ -291,7 +292,7 @@ function App() {
               component={Profile}
               onSubmit={handleEditProfile}
               signOut={handleSignOut}
-              loggedIn={jwt}
+              loggedIn={tokenChecked}
             />
           </Route>
           <Route path="*">
