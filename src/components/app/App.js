@@ -87,6 +87,8 @@ function App() {
           setLocalApiMovies(allMovies);
         })
         .catch(err => console.log(`Ошибка при получении фильмов: ${err}`))
+    } else {
+      setLocalApiMovies(JSON.parse(localStorage.getItem('movies')))
     }
   }, [loggedIn])
 
@@ -179,8 +181,6 @@ function App() {
 
       return ((nameEN.includes(inputs) || nameRU.includes(inputs)) ? i : null)
     })
-
-    console.log(filteredSearch)
 
     localStorage.setItem('filteredMovies', JSON.stringify(filteredSearch))
     setApiFilteredMovies(filteredSearch)
