@@ -65,7 +65,7 @@
 
 .profile__submit_disabled {
   opacity: 0.6;
-  background-color: rgba(139, 139, 139, 1);
+  color: rgba(139, 139, 139, 1);
   cursor: default;
 }
 
