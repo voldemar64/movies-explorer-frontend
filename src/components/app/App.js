@@ -180,6 +180,8 @@ function App() {
       return ((nameEN.includes(inputs) || nameRU.includes(inputs)) ? i : null)
     })
 
+    console.log(filteredSearch)
+
     localStorage.setItem('filteredMovies', JSON.stringify(filteredSearch))
     setApiFilteredMovies(filteredSearch)
   }
