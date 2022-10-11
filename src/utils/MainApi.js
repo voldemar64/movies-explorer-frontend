@@ -65,7 +65,7 @@ class MainApi {
         description: movie.description,
         image: `https://api.nomoreparties.co${movie.image.url}`,
         trailerLink: movie.trailerLink.match(/(http:\/\/|https:\/\/)(www\.)*[a-z0-9\S]*/) ? 
-        movie.trailerLink : `https://www.youtube.com/results?search_query=trailer+${movie.nameEN}`,
+        movie.trailerLink : `https://www.youtube.com/results?search_query=trailer`,
         thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
         movieId: movie.id,
         nameRU: movie.nameRU,
