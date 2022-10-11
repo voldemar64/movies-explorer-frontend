@@ -43,6 +43,7 @@ function App() {
   const history = useHistory();
   const { width } = useWindowWidth();
   const pathName = useLocation();
+  const token = localStorage.getItem("jwt");
 
   React.useEffect(() => {
     if (pathName.pathname === '/movies') {
@@ -57,7 +58,6 @@ function App() {
   }, [pathName.pathname, localSavedMovies])
 
   React.useEffect(() => {
-    const token = localStorage.getItem("jwt");
     if (token){
       mainApi.getUserInfo()
         .then(res => {
@@ -76,7 +76,7 @@ function App() {
     } else {
       setTokenChecked(true)
     }
-  }, [])
+  }, [token])
 
   React.useEffect(() => {
     if (loggedIn && !(localStorage.getItem('movies'))) {
