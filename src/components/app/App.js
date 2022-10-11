@@ -68,7 +68,7 @@ function App() {
             setLoggedIn(true)
             setCurrentUser(res)
           } else {
-            setTokenChecked(true)
+            setTokenChecked(false)
           }
         })
         .catch(err => {

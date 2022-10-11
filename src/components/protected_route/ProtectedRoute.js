@@ -5,7 +5,7 @@ import Loader from "../loader_spin/Loader";
 function ProtectedRoute({ component: Component, ...props }) {
 
   return (
-    props.tokenChecked ? (props.loggedIn ? <Component {...props}/> : <Redirect to="/"/>) : <Loader/>
+    props.tokenChecked ? <Component {...props}/> : <Loader/>
   )
 }
 
