@@ -58,19 +58,23 @@ function App() {
 
   React.useEffect(() => {
     const token = localStorage.getItem("jwt");
-    auth.checkToken(token)
-      .then(res => {
-        if (res) {
+    if (token){
+      auth.checkToken(token)
+        .then(res => {
+          if (res) {
+            setTokenChecked(true)
+            setLoggedIn(true)
+          } else {
+            setTokenChecked(true)
+          }
+        })
+        .catch(err => {
           setTokenChecked(true)
-          setLoggedIn(true)
-        } else {
-          setTokenChecked(true)
-        }
-      })
-      .catch(err => {
-        setTokenChecked(true)
-        console.log(`Не получается токен: ${err}`)
-      })
+          console.log(`Не получается токен: ${err}`)
+        })
+    } else {
+      setTokenChecked(true)
+    }
   }, [])
 
   React.useEffect(() => {
@@ -105,7 +109,10 @@ function App() {
           setLocalSavedMovies(userMovies);
           setSavedFilteredMovies(userMovies);
         })
-        .catch(err => console.log(`Ошибка при получении сохранённых фильмов: ${err}`))
+        .catch(err => {
+          console.log(currentUser)
+          console.log(`Ошибка при получении сохранённых фильмов: ${err}`)
+        })
     }
   }, [loggedIn, currentUser])
 
