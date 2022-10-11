@@ -35,7 +35,6 @@ function App() {
   const history = useHistory();
   const { width } = useWindowWidth();
   const pathName = useLocation();
-  const jwt = localStorage.getItem("jwt");
 
   React.useEffect(() => {
     if (pathName.pathname === '/movies') {
@@ -50,8 +49,9 @@ function App() {
   }, [pathName.pathname, localSavedMovies])
 
   React.useEffect(() => {
-    if (jwt){
-      auth.checkToken(jwt)
+    const token = localStorage.getItem("jwt");
+    if (token){
+      auth.checkToken(token)
         .then(res => {
           if (res) {
             setLoggedIn(true)
@@ -59,7 +59,7 @@ function App() {
         })
         .catch(err => console.log(`Не получается токен: ${err}`))
     }
-  }, [jwt])
+  }, [])
 
   React.useEffect(() => {
     if (loggedIn) {
@@ -241,7 +241,7 @@ function App() {
       <Header
         onSideBarOpen={handleSideBar}
         windowWidth={useWindowWidth}
-        isLogged={jwt}
+        isLogged={loggedIn}
       />
       <main className="main">
         <Switch>
@@ -269,7 +269,7 @@ function App() {
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
               listLength={listLength}
-              loggedIn={jwt}
+              loggedIn={loggedIn}
             />
           </Route>
           <Route path="/saved-movies">
@@ -282,7 +282,7 @@ function App() {
               onDelete={handleDislikeMovie}
               addMovies={addMovies}
               listLength={listLength}
-              loggedIn={jwt}
+              loggedIn={loggedIn}
             />
           </Route>
           <Route path="/profile">
@@ -290,7 +290,7 @@ function App() {
               component={Profile}
               onSubmit={handleEditProfile}
               signOut={handleSignOut}
-              loggedIn={jwt}
+              loggedIn={loggedIn}
             />
           </Route>
           <Route path="*">
