@@ -51,15 +51,20 @@ function App() {
 
   React.useEffect(() => {
     const token = localStorage.getItem("jwt");
-    setTokenCheked(true)
     if (token){
       auth.checkToken(token)
         .then(res => {
           if (res) {
+            setTokenCheked(true)
             setLoggedIn(true)
           }
         })
-        .catch(err => console.log(`Не получается токен: ${err}`))
+        .catch(err => {
+          setTokenCheked(true)
+          console.log(`Не получается токен: ${err}`)
+        })
+    } else {
+      setTokenCheked(true)
     }
   }, [])
 
@@ -132,6 +137,7 @@ function App() {
   }
 
   function handleSignOut() {
+    setTokenCheked(false)
     setLoggedIn(false)
     setCurrentUser(null)
     setSavedFilteredMovies([])
