@@ -10,7 +10,6 @@ function SearchForm({ durationFilter, handleSearch }) {
   function handleSubmitForm(e) {
     e.preventDefault();
     handleSearch(value);
-    durationFilter(isActive);
   }
 
   return (
