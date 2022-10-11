@@ -26,11 +26,11 @@ function Profile({ onSubmit, signOut }) {
         <h2 className="profile__title">{`Привет, ${currentUser.name}`}</h2>
         <div className="profile__input-container">
           <label className="profile__label">Имя</label>
-          <input className="profile__input" type="text" value={userName} onChange={handleChangeName}/>
+          <input className="profile__input" required type="text" value={userName} onChange={handleChangeName}/>
         </div>
         <div className="profile__input-container">
           <label className="profile__label">E-mail</label>
-          <input className="profile__input" type="text" value={userEmail} onChange={handleChangeEmail}/>
+          <input className="profile__input" required type="text" value={userEmail} onChange={handleChangeEmail}/>
         </div>
         <button className="profile__submit" type="submit">Редактировать</button>
       </form>

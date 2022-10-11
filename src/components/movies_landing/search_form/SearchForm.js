@@ -22,11 +22,7 @@ function SearchForm({ durationFilter, handleSearch }) {
     if (pathName.pathname === "/movies") {
       handleSearch(localStorageValue ?? '')
       durationFilter(localChecked ?? false)
-    }
-  }, [pathName])
-
-  React.useEffect(() => {
-    if (pathName.pathname === '/saved-movies') {
+    } else if (pathName.pathname === "/saved-movies") {
       setValue('')
       setIsActive(false)
     }
