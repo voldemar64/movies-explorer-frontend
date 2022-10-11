@@ -15,20 +15,19 @@ function SearchForm({ durationFilter, handleSearch }) {
     if (pathName.pathname === "/movies") {
       localStorage.setItem('savedSearchValue', value)
       localStorage.setItem('savedCheck', isActive)
-      console.log(isActive)
     }
   }, [value, isActive])
 
   React.useEffect(() => {
     if (pathName.pathname === "/movies") {
-      handleSearch(value)
-      console.log(isActive)
-      durationFilter(isActive)
+      handleSearch(localStorageValue ?? '')
+      durationFilter(isActive ?? false)
     } else if (pathName.pathname === "/saved-movies") {
       setValue('')
       setIsActive(false)
+      handleSearch(value)
     }
-  }, [pathName])
+  }, [pathName, isActive])
 
   function handleSubmitForm(e) {
     e.preventDefault();
