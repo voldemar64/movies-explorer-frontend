@@ -19,6 +19,14 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import mainApi  from "../../utils/MainApi";
 import moviesApi from "../../utils/MoviesApi";
 import * as auth from "../../utils/auth";
+
+import {
+  SMALL_RES_CARD_COUNT, 
+  HIGH_RES_CARD_ADD_COUNT, 
+  MIDDLE_RES_CARD_COUNT, 
+  SMALL_RES_CARD_ADD_COUNT, 
+  HIGH_RES_CARD_COUNT, SHORT_FILMS
+} from "../../utils/helpConstants";
 import tick from '../../images/tick.svg';
 import cross from '../../images/cross.svg';
 
@@ -107,14 +115,14 @@ function App() {
 
   React.useEffect(() => {
     if (width >= 1280) {
-      setMoviesNumber(3);
-      setListLength(12);
+      setMoviesNumber(HIGH_RES_CARD_ADD_COUNT);
+      setListLength(HIGH_RES_CARD_COUNT);
     } else if (width >= 768 && width <= 1279) {
-      setMoviesNumber(2);
-      setListLength(8);
+      setMoviesNumber(SMALL_RES_CARD_ADD_COUNT);
+      setListLength(MIDDLE_RES_CARD_COUNT);
     } else if (width <= 320 && width <= 480) {
-      setMoviesNumber(2);
-      setListLength(5);
+      setMoviesNumber(SMALL_RES_CARD_ADD_COUNT);
+      setListLength(SMALL_RES_CARD_COUNT);
     }
   }, [width])
 
@@ -203,7 +211,7 @@ function App() {
     const filteredFilms = JSON.parse(localStorage.getItem('filteredMovies'))
     
     if (toggle && filteredFilms) {
-      const shorts = filteredFilms.filter((i) => i.duration <= 40)
+      const shorts = filteredFilms.filter((i) => i.duration <= SHORT_FILMS)
       setApiFilteredMovies(shorts)
     } else {
       setApiFilteredMovies(filteredFilms)
@@ -214,7 +222,7 @@ function App() {
     const savedFilteredFilms = JSON.parse(localStorage.getItem('savedFilteredMovies'))
 
     if (toggle && savedFilteredFilms) {
-      const shorts = savedFilteredFilms.filter((i) => i.duration <= 40)
+      const shorts = savedFilteredFilms.filter((i) => i.duration <= SHORT_FILMS)
       setSavedFilteredMovies(shorts)
     } else {
       setSavedFilteredMovies(savedFilteredFilms)
