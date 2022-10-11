@@ -9,7 +9,7 @@ function Login({ submit, loggedIn }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (isValid) {
-      submit(values.name);
+      submit(values);
     }
   }
 
