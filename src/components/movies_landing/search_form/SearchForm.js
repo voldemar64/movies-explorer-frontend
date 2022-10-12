@@ -2,7 +2,7 @@ import "./SearchForm.css"
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-function SearchForm({ durationFilter, handleSearch, setSearchDone }) {
+function SearchForm({ durationFilter, handleSearch }) {
   const localStorageValue = localStorage.getItem('savedSearchValue');
   const localChecked = localStorage.getItem('savedCheck') === 'true' ? true : false;
 
@@ -22,11 +22,9 @@ function SearchForm({ durationFilter, handleSearch, setSearchDone }) {
     if (pathName.pathname === "/movies") {
       handleSearch(localStorageValue ?? '')
       durationFilter(localChecked ?? false)
-      setSearchDone(true)
     } else if (pathName.pathname === "/saved-movies") {
       setValue('')
       setIsActive(false)
-      setSearchDone(false)
       handleSearch(value)
     }
   }, [pathName])
@@ -35,7 +33,6 @@ function SearchForm({ durationFilter, handleSearch, setSearchDone }) {
     e.preventDefault();
     handleSearch(value);
     durationFilter(isActive)
-    setSearchDone(true)
   }
 
   return (

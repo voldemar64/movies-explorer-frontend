@@ -42,6 +42,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [tokenChecked, setTokenChecked] = React.useState(false);
+  const [searchDone, setSearchDone] = React.useState(false);
 
   const [moviesNumber, setMoviesNumber] = React.useState(0);
   const [listLength, setListLength] = React.useState(0);
@@ -185,6 +186,7 @@ function App() {
 
     localStorage.setItem('filteredMovies', JSON.stringify(filteredSearch))
     setApiFilteredMovies(filteredSearch)
+    setSearchDone(input.length>0 ? true : false)
   }
 
   function handleSearchSaved(input) {
@@ -199,6 +201,7 @@ function App() {
     localStorage.setItem('savedFilteredMovies', JSON.stringify(filteredSearch))
     const filteredMovies = JSON.parse(localStorage.getItem('savedFilteredMovies'))
     setSavedFilteredMovies(filteredMovies.length !== 0 ? filteredMovies : localSavedMovies)
+    setSearchDone(input.length>0 ? true : false)
   }
 
   function durationFilter(toggle) {
@@ -324,6 +327,7 @@ function App() {
               listLength={listLength}
               logggedIn={loggedIn}
               tokenChecked={tokenChecked}
+              searchDone={searchDone}
             />
           </Route>
           <Route path="/saved-movies">
@@ -338,6 +342,7 @@ function App() {
               listLength={listLength}
               loggedIn={loggedIn}
               tokenChecked={tokenChecked}
+              searchDone={searchDone}
             />
           </Route>
           <Route path="/profile">
