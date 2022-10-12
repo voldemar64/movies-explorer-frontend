@@ -20,8 +20,10 @@ function SearchForm({ durationFilter, handleSearch, setSearchDone }) {
 
   React.useEffect(() => {
     if (pathName.pathname === "/movies") {
-      handleSearch(localStorageValue ?? '')
-      durationFilter(localChecked ?? false)
+      if (localStorageValue) {
+        handleSearch(localStorageValue)
+        durationFilter(localChecked ?? false)
+      }
       setSearchDone(true)
     } else if (pathName.pathname === "/saved-movies") {
       setValue('')
