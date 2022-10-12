@@ -11,7 +11,7 @@
   border-radius: 6px;
   border: #424242 1px solid;
   color: white;
-  background-color: #222;
+  background-color: #202020;
   padding: 11px 0;
   cursor: pointer;
   transition: opacity 0.3s linear;
@@ -29,6 +29,6 @@
 
 @media screen and (max-width: 767px) {
   .preloader__button {
-    width: 100px;
+    width: 200px;
   }
 }
