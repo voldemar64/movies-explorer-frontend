@@ -25,7 +25,7 @@ function SearchForm({ durationFilter, handleSearch }) {
     } else if (pathName.pathname === "/saved-movies") {
       setValue('')
       setIsActive(false)
-      handleSearch(value)
+      handleSearch('')
     }
   }, [pathName])
 
