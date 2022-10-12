@@ -186,7 +186,7 @@ function App() {
 
     localStorage.setItem('filteredMovies', JSON.stringify(filteredSearch))
     setApiFilteredMovies(filteredSearch)
-    setSearchDone(input.length>0 ? true : false)
+    setSearchDone(input!=='' ? true : false)
   }
 
   function handleSearchSaved(input) {
@@ -201,7 +201,7 @@ function App() {
     localStorage.setItem('savedFilteredMovies', JSON.stringify(filteredSearch))
     const filteredMovies = JSON.parse(localStorage.getItem('savedFilteredMovies'))
     setSavedFilteredMovies(filteredMovies.length !== 0 ? filteredMovies : localSavedMovies)
-    setSearchDone(input.length>0 ? true : false)
+    setSearchDone(input!=='' ? true : false)
   }
 
   function durationFilter(toggle) {
