@@ -36,7 +36,7 @@ function MoviesCard({ key, card, savedMovies, onSave, onDelete}) {
           {card.nameRU}
         </p>
         <p className="card__duration">
-          {hours + minutes}
+          {(hours!=='' && minutes!=='') ? hours + ' ' + minutes : hours + minutes}
         </p>
       </div>
       <a className="card__link" rel="noreferrer" target="_blank"
