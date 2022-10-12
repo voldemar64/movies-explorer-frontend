@@ -175,7 +175,7 @@ function App() {
   }
 
   function handleSearch(input) {
-    const filteredSearch = localApiMovies.filter((i) => {
+    const filteredSearch = (input === '') ? [] : localApiMovies.filter((i) => {
       const inputs = input.toLowerCase();
       const nameEN = i.nameEN.toLowerCase();
       const nameRU = i.nameRU.toLowerCase();
@@ -188,7 +188,7 @@ function App() {
   }
 
   function handleSearchSaved(input) {
-    const filteredSearch = localSavedMovies.filter((i) => {
+    const filteredSearch = (input === '') ? [] : localSavedMovies.filter((i) => {
       const inputs = input.toLowerCase();
       const nameEN = i.nameEN.toLowerCase();
       const nameRU = i.nameRU.toLowerCase();
