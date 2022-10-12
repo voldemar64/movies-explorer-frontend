@@ -65,10 +65,12 @@ function App() {
             setCurrentUser(res)
           } else {
             setTokenChecked(false)
+            handleSignOut()
           }
         })
         .catch(err => {
           setTokenChecked(false)
+          handleSignOut()
           console.log(`Не получается токен: ${err}`)
         })
     } else {
