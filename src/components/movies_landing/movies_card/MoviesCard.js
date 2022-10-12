@@ -15,14 +15,18 @@ function MoviesCard({ key, card, savedMovies, onSave, onDelete}) {
       hours = String(hoursNumber) + ' часа'
     } else if (hoursNumber >= 5) {
       hours = String(hoursNumber) + ' часов'
+    } else {
+      hours = ''
     }
 
     if (minutesNumber % 10 === 1) {
       minutes = String(minutesNumber) + ' минута'
     } else if (minutesNumber % 10 > 1 && minutesNumber % 10 < 5) {
       minutes = String(minutesNumber) + ' минуты'
-    } else if (minutesNumber % 10 >= 5 || minutesNumber % 10 === 0) {
+    } else if (minutesNumber % 10 >= 5) {
       minutes = String(minutesNumber) + ' минут'
+    } else {
+      minutes = ''
     }
 
     return [hours, minutes]
