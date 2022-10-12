@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 function SearchForm({ durationFilter, handleSearch }) {
   const localStorageValue = localStorage.getItem('savedSearchValue')
-  const localChecked = localStorage.getItem('savedCheck')
+  const localChecked = localStorage.getItem('savedCheck') === 'false' ? false : true
 
   const [isActive, setIsActive] = React.useState(localChecked ?? false);
   const [value, setValue] = React.useState(localStorageValue ?? '');
