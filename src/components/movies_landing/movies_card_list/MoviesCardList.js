@@ -2,7 +2,7 @@ import MoviesCard from "../movies_card/MoviesCard";
 import Preloader from "../preloader/Preloader";
 import "./MoviesCardList.css";
 
-function MoviesCardList({movies, savedMovies, onSave, onDelete, addMovies, listLength}) {
+function MoviesCardList({movies, savedMovies, onSave, onDelete, addMovies, listLength, searchDone}) {
 
   return (
     <section className="movies">
@@ -19,7 +19,8 @@ function MoviesCardList({movies, savedMovies, onSave, onDelete, addMovies, listL
       </ul>
       : <></>
       }
-      {movies.length === 0 ? <p className="text">Введите название фильма в поисковой строке</p> : 
+      {movies.length === 0 ? (searchDone ? <p className="text">По Вашему запросу ничего не найдено</p> 
+      : <p className="text">Введите название фильма в поисковой строке</p>) : 
         (movies.length > listLength) &&
         <Preloader addMovies={addMovies}/>}
     </section>
