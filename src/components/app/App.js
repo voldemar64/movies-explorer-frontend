@@ -190,7 +190,7 @@ function App() {
   }
 
   function handleSearchSaved(input) {
-    const filteredSearch = (input === '') ? [] : localSavedMovies.filter((i) => {
+    const filteredSearch = localSavedMovies.filter((i) => {
       const inputs = input.toLowerCase();
       const nameEN = i.nameEN.toLowerCase();
       const nameRU = i.nameRU.toLowerCase();
