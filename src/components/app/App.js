@@ -25,8 +25,11 @@ import {
   HIGH_RES_CARD_ADD_COUNT, 
   MIDDLE_RES_CARD_COUNT, 
   SMALL_RES_CARD_ADD_COUNT, 
-  HIGH_RES_CARD_COUNT, SHORT_FILMS
-} from "../../utils/helpConstants";
+  HIGH_RES_CARD_COUNT, SHORT_FILMS,
+  MAX_WIDTH,
+  MIDDLE_WIDTH,
+  SMALL_WIDTH,
+  } from "../../utils/helpConstants";
 import tick from '../../images/tick.svg';
 import cross from '../../images/cross.svg';
 
@@ -101,13 +104,13 @@ function App() {
   }, [loggedIn, currentUser])
 
   React.useEffect(() => {
-    if (width >= 1280) {
+    if (width >= MAX_WIDTH) {
       setMoviesNumber(HIGH_RES_CARD_ADD_COUNT);
       setListLength(HIGH_RES_CARD_COUNT);
-    } else if (width >= 768 && width <= 1279) {
+    } else if (width >= MIDDLE_WIDTH && width < MAX_WIDTH) {
       setMoviesNumber(SMALL_RES_CARD_ADD_COUNT);
       setListLength(MIDDLE_RES_CARD_COUNT);
-    } else if (width <= 320 && width <= 480) {
+    } else if (width <= SMALL_WIDTH) {
       setMoviesNumber(SMALL_RES_CARD_ADD_COUNT);
       setListLength(SMALL_RES_CARD_COUNT);
     }
