@@ -4,6 +4,30 @@ import "./MoviesCard.css";
 function MoviesCard({ key, card, savedMovies, onSave, onDelete}) {
   const pathName = useLocation();
 
+  function durationCalc() {
+    const hoursNumber = Math.floor(card.duration / 60);
+    const minutesNumber = card.duration % 60;
+    let hours;
+    let minutes;
+    if (hoursNumber === 1) {
+      hours = String(hoursNumber) + ' час'
+    } else if (hoursNumber > 1 && hoursNumber < 5) {
+      hours = String(hoursNumber) + ' часа'
+    } else if (hoursNumber >= 5) {
+      hours = String(hoursNumber) + ' часов'
+    }
+
+    if (minutesNumber % 10 === 1) {
+      minutes = String(minutesNumber) + ' минута'
+    } else if (minutesNumber % 10 > 1 && minutesNumber % 10 < 5) {
+      minutes = String(minutesNumber) + ' минуты'
+    } else if (minutesNumber % 10 >= 5 || minutesNumber % 10 === 0) {
+      minutes = String(minutesNumber) + ' минут'
+    }
+
+    return [hours, minutes]
+  }
+  
   return(
     <li className="card" key={key}>
       <div className="card__container">
@@ -11,7 +35,7 @@ function MoviesCard({ key, card, savedMovies, onSave, onDelete}) {
           {card.nameRU}
         </p>
         <p className="card__duration">
-          {card.duration} минут
+          {durationCalc[0]+durationCalc[1]}
         </p>
       </div>
       <a className="card__link" rel="noreferrer" target="_blank"
