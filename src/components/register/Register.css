@@ -66,6 +66,8 @@
 }
 
 .register__button_disabled {
+  opacity: 0.6;
+  background-color: rgba(139, 139, 139, 1);
   cursor: default;
 }
 

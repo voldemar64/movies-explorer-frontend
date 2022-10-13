@@ -55,12 +55,18 @@
 
 .profile__submit {
   background-color: transparent;
+  color: #fff;
   border: none;
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: #FFFFFF;
   transition: opacity .3s linear;
+}
+
+.profile__submit_disabled {
+  opacity: 0.6;
+  color: rgba(139, 139, 139, 1);
+  cursor: default;
 }
 
 .profile__submit:hover {
@@ -68,7 +74,11 @@
 }
 
 .profile__signout {
+  width: 136px;
+  align-self: center;
+  background-color: transparent;
   text-decoration: none;
+  border: none;
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
